@@ -12,22 +12,27 @@ body,
 }
 
 h1 {
+  font-family: "Poppins", serif;
   font-size: xx-large;
-  color: #00586f;
+  color: #000000;
 }
 
 span {
   font-size: large;
-  color: #2b3133;
+  color: #d7263b;
 }
 
 p {
-  font-size: medium;
-  color: #2b3133;
+  font-family: "Quicksand", serif;
+  font-optical-sizing: auto;
+  font-size: 200;
+  color: #000000; 
 }
 
 a {
-  color: whitesmoke;
+  font-family: "Poppins", serif;
+  font-weight: 200;
+  color: #f8f9fa;
   font-size: medium;
   text-decoration: none;
 }
@@ -42,7 +47,7 @@ button {
   outline: none;
   align-items: center;
   justify-content: center;
-  background-color: #007491;
+  background-color: #4fc3f7;
   border: none;
   width: 256px;
   height: 54px;
@@ -53,5 +58,5 @@ button {
 }
 
 button:hover {
-  background-color: #00586f;
+  background-color: #1e88e5;
 }
