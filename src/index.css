@@ -11,10 +11,18 @@ body,
   font-style: normal;
 }
 
-h1 {
-  font-family: "Poppins", serif;
-  font-size: xx-large;
+h1,h2 {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
   color: #000000;
+}
+
+h3, h4{
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
 }
 
 span {
@@ -22,10 +30,10 @@ span {
   color: #d7263b;
 }
 
-p {
-  font-family: "Quicksand", serif;
-  font-optical-sizing: auto;
-  font-size: 200;
+body, p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   color: #000000; 
 }
 
@@ -55,6 +63,10 @@ button {
   text-align: center;
   color: whitesmoke;
   font-size: large;
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
 }
 
 button:hover {
