@@ -1,27 +1,21 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router";
+import "./index.css";
 import Home from "./pages/home/Home";
 import Quiz from "./pages/quiz/Quiz";
-import NotFound from "./pages/not-found/NotFound";
-import Heart from "./pages/heart/Heart";
-import HighBloodPressure from "./pages/heart/high-blood-pressure/HighBloodPressure";
-import LowBloodPressure from "./pages/heart/low-blood-pressure/LowBloodPressure";
-import "./index.css";
 import Layout from "./layout/Layout";
+import Disease from "./pages/disease/Disease.jsx";
+import Us from "./pages/sobreNosotros/Us.jsx"
 // import App from "./App";
 
 createRoot(document.getElementById("root")).render(
-  // <App />
   <BrowserRouter>
     <Layout>
       <Routes>
-        <Route index path="/" element={<Home />} />
-        <Route path="quiz" element={<Quiz />} />
-        <Route path="*" element={<NotFound />} />
-        <Route path="corazon" element={<Heart />}>
-          <Route path="presion-alta" element={<HighBloodPressure />} />
-          <Route path="presion-baja" element={<LowBloodPressure />} />
-        </Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/enfermedades/:nombre" element={<Disease />} />
+        <Route path="/quiz" element={<Quiz />} />
+        <Route path="/nosotros" element={<Us />} />
       </Routes>
     </Layout>
   </BrowserRouter>
