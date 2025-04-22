@@ -1,4 +1,17 @@
-footer{
-    background-color: #225DCA;
-    padding: 1rem;
+footer {
+  background-color: #225dca;
+  color: white !important;
+}
+
+hr {
+  margin-top: 0;
+  margin-bottom: 10px; /* Ajusta según sea necesario */
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  color: white;
 }
