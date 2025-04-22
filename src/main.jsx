@@ -6,6 +6,7 @@ import NotFound from "./pages/not-found/NotFound";
 import Heart from "./pages/heart/Heart";
 import HighBloodPressure from "./pages/heart/high-blood-pressure/HighBloodPressure";
 import LowBloodPressure from "./pages/heart/low-blood-pressure/LowBloodPressure";
+import InsuficienciaCardiaca from "./pages/heart/insuficiencia-cardiaca/InsuficienciaCardiaca";
 import "./index.css";
 import Layout from "./layout/Layout";
 // import App from "./App";
@@ -21,6 +22,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="corazon" element={<Heart />}>
           <Route path="presion-alta" element={<HighBloodPressure />} />
           <Route path="presion-baja" element={<LowBloodPressure />} />
+          <Route path="insuficiencia-cardiaca" element={<InsuficienciaCardiaca />} />
         </Route>
       </Routes>
     </Layout>

@@ -7,6 +7,7 @@ const Footer = () => {
       <ul>
         <li>
           <Link to="/corazon/presion-alta">Presión alta</Link>
+          <Link to="/heart/insuficiencia-cardiaca">Insuficiencia Cardíaca</Link>
         </li>
       </ul>
     </footer>
