@@ -9,8 +9,8 @@ export default function Arritmia(props) {
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.heartRateMonitor.geometry} // Verifica que esta propiedad exista en el modelo
-        material={materials.heartRateMaterial} // Verifica que esta propiedad exista en el modelo
+        //geometry={nodes.heartRateMonitor.geometry} // Verifica que esta propiedad exista en el modelo
+        material={materials.heartRateMonitorMaterial} // Verifica que esta propiedad exista en el modelo
       />
     </group>
   )
