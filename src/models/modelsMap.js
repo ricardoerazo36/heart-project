@@ -13,4 +13,10 @@ export const modelos = {
     Modelo3: lazy(() => import("./arritmia/modelo3/Modelo3.jsx")),
     Modelo4: lazy(() => import("./arritmia/modelo4/Modelo4.jsx")),
   },
+  insuficienciaCardiaca: {
+    Modelo1: lazy(() => import("./insuficienciaCardiaca/modelo1/Modelo1.jsx")),
+    Modelo2: lazy(() => import("./insuficienciaCardiaca/modelo2/Modelo2.jsx")),
+    Modelo3: lazy(() => import("./insuficienciaCardiaca/modelo3/Modelo3.jsx")),
+    Modelo4: lazy(() => import("./insuficienciaCardiaca/modelo4/Modelo4.jsx")),
+  },
 };
