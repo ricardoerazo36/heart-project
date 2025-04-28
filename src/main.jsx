@@ -3,10 +3,6 @@ import { BrowserRouter, Routes, Route } from "react-router";
 import "./index.css";
 import Home from "./pages/home/Home";
 import Quiz from "./pages/quiz/Quiz";
-<<<<<<< HEAD
-=======
-import NotFound from "./pages/not-found/NotFound";
->>>>>>> wxyz
 import Layout from "./layout/Layout";
 import Disease from "./pages/disease/Disease.jsx";
 import Us from "./pages/sobreNosotros/Us.jsx"
@@ -20,12 +16,6 @@ createRoot(document.getElementById("root")).render(
         <Route path="/enfermedades/:nombre" element={<Disease />} />
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/nosotros" element={<Us />} />
-<<<<<<< HEAD
-=======
-        <Route index path="/" element={<Home />} />
-        <Route path="quiz" element={<Quiz />} />
-        <Route path="*" element={<NotFound />} />
->>>>>>> wxyz
       </Routes>
     </Layout>
   </BrowserRouter>

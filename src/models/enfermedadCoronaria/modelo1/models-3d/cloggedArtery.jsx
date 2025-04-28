@@ -5,11 +5,7 @@ export default function CloggedArtery(props) {
   const { nodes, materials } = useGLTF('/models-3d/clogged-artery.glb')
   console.log("llego")
   return (
-<<<<<<< HEAD
     <group {...props} dispose={null} scale={[150,150,150]}>
-=======
-    <group {...props} dispose={null} scale={[200,200,200]}>
->>>>>>> wxyz
       <mesh
         castShadow
         receiveShadow
