@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import "./Home.css";
 import { useNavigate } from 'react-router-dom';
 import { Canvas } from '@react-three/fiber';
