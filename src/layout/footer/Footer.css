@@ -1,59 +1,17 @@
-/*
 footer {
-    background-color: #225dca;
-    color: white !important;
-  }
-  
-  hr {
-    margin-top: 0;
-    margin-bottom: 10px; 
-  }
-  
-  a {
-    text-decoration: none;
-  }
-  
-  p {
-    color: white;
-  }
+  background-color: #225dca;
+  color: white !important;
+}
 
+hr {
+  margin-top: 0;
+  margin-bottom: 10px; /* Ajusta según sea necesario */
+}
 
-*/
+a {
+  text-decoration: none;
+}
 
-  footer {
-    background-color: #225dca;
-    color: white !important;
-    padding: 20px 0;  /* Reducido de 40px a 20px */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-  }
-  footer a {
-    text-decoration: none;
-    color: white;
-    display: block;
-    margin-bottom: 5px;  /* Reducido de 10px a 5px */
-    line-height: 1.2;    /* Líneas más juntas */
-  }
-  
-  footer p {
-    color: white;
-    margin: 0;
-  }
-  footer h3 {
-    color: white;
-    font-size: 1.3rem;  /* Reducido de 1.5rem */
-    margin-bottom: 10px; /* Reducido de 20px a 10px */
-    font-weight: normal;
-  }
-  /* Estilos para cada columna del footer */
-  .footer-brand, .footer-links, .footer-info, .footer-tests {
-    padding: 0 15px;  /* Reducido de 20px a 15px */
-    margin-bottom: 15px;  /* Reducido de 30px a 15px */
-  }
-  /* Copyright en la parte inferior */
-  .copyright {
-    width: 100%;
-    padding: 10px 0 0 20px;  /* Reducido el padding superior de 20px a 10px */
-    font-size: 0.9rem;
-  }
+p {
+  color: white;
+}

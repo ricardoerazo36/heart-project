@@ -33,40 +33,40 @@ const Disease = () => {
           </Suspense>
         </div>
         <div className="text">
-          <h2>¿Qué es?</h2>
+          <h2 className="pill">¿Qué es?</h2>
           <p>{info.descripcion}</p>
         </div>
       </section>
 
       <section className="enfermedadRow">
         <div className="text">
-          <h2>Síntomas</h2>
+          <h2 className="pill">Síntomas</h2>
           <p>{info.sintomas}</p>
         </div>
-        <Suspense fallback={<div>Cargando modelo 1...</div>}>
+        <Suspense fallback={<div>Cargando modelo 2...</div>}>
           {Modelos.Modelo2 ? <Modelos.Modelo2 /> : <img src="/imagenes/fallo.png" alt="fallo" />}
         </Suspense>
       </section>
 
       <section className="enfermedadRow">
         <div className="modeloSec">
-          <Suspense fallback={<div>Cargando modelo 1...</div>}>
+          <Suspense fallback={<div>Cargando modelo 3...</div>}>
             {Modelos.Modelo3 ? <Modelos.Modelo3 /> : <img src="/imagenes/fallo.png" alt="fallo" />}
           </Suspense>
         </div>
         <div className="text">
-          <h2>Tratamiento</h2>
+          <h2 className="pill">Tratamiento</h2>
           <p>{info.tratamiento}</p>
         </div>
       </section>
 
       <section className="enfermedadRow">
         <div className="text">
-          <h2>Prevención y cuidados</h2>
+          <h2 className="pill">Prevención y cuidados</h2>
           <p>{info.prevencionYcuidado}</p>
         </div>
         <div className="modeloSec">
-          <Suspense fallback={<div>Cargando modelo 1...</div>}>
+          <Suspense fallback={<div>Cargando modelo 4...</div>}>
             {Modelos.Modelo4 ? <Modelos.Modelo4 /> : <img src="/imagenes/fallo.png" alt="fallo" />}
           </Suspense>
         </div>
