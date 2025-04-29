@@ -1,16 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 import "./Home.css";
 import { useNavigate } from 'react-router-dom';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, useGLTF } from '@react-three/drei';
-import {Suspense} from 'react';
-
-// 3D Model Component
-const HeartModel = () => {
-  const { scene } = useGLTF('./models-3d/human-heart.glb'); // Adjust path as needed
-  return <primitive object={scene} scale={0.8} position={[0, -1, 0]} />;
-};
-
+import HeartViewer from './models-3d/HeartViewer';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -26,22 +17,15 @@ const Home = () => {
           y datos avalados por la medicina, ilustrados utilizando modelos 3D.
         </p>
       </header>
-      {/* 3D Model Banner */}
+      
+      {/* Visualizador del modelo 3D */}
       <div className="model-banner">
-        <Suspense fallback={<div className="model-loading">Cargando modelo 3D...</div>}>
-          <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
-            <ambientLight intensity={0.5} />
-            <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
-            <pointLight position={[-10, -10, -10]} />
-            <HeartModel />
-            <OrbitControls enableZoom={true} />
-          </Canvas>
-        </Suspense>
+        <HeartViewer height="450px" />
       </div>
 
       <button 
         className="cta-button"
-        onClick={() => navigate('/Quiz')} 
+        onClick={() => navigate('/Quiz')}
       >
         Explorar Quiz
       </button>
