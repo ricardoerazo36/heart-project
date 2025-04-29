@@ -6,7 +6,7 @@ import "./Footer.css";
 
 const Footer = () => {
   return (
-  <footer className="py-14 pt-0">
+    <footer className="py-14 pt-0">
       <div className="mt-0 container px-4">
         <hr className="mt-0" />
         <div className="row">
