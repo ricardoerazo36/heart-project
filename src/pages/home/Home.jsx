@@ -41,7 +41,7 @@ const Home = () => {
 
       <button 
         className="cta-button"
-        onClick={() => navigate('/Quiz')} // Change '/explorar' to your desired route
+        onClick={() => navigate('/Quiz')} 
       >
         Explorar Quiz
       </button>
