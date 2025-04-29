@@ -1,8 +1,8 @@
 {
     "nombre": "Arritmia",
     "descripcion": "Es un trastorno de la frecuencia cardiaca (pulso) o del ritmo cardiaco. El corazón puede latir demasiado rápido (taquicardia), demasiado lento (bradicardia) o de manera irregular. Una arritmia puede no causar daño, ser una señal de otros problemas cardíacos o un peligro inmediato para su salud.",
-    "Sintomas": "Es posible que no se presenten síntomas. Cuando sí los hay, pueden incluir palpitaciones, dolor en el pecho, desmayos o mareos.",
-    "Tratamiento": "El tratamiento varia. Si es necesario, el tratamiento puede incluir fármacos antiarrítmicos, procedimientos médicos, dispositivos implantables y cirugía.",
+    "sintomas": "Es posible que no se presenten síntomas. Cuando sí los hay, pueden incluir palpitaciones, dolor en el pecho, desmayos o mareos.",
+    "tratamiento": "El tratamiento varia. Si es necesario, el tratamiento puede incluir fármacos antiarrítmicos, procedimientos médicos, dispositivos implantables y cirugía.",
     "prevencionYcuidado": "Hacer ejercicio regularmente, mantener un peso saludable y llevar una dieta saludable y de bajo contenido graso, con abundantes verduras, frutas y otros alimentos ricos en vitaminas, son los pilares de una vida saludable para el corazón."
 
 
