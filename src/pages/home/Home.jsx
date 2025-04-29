@@ -43,7 +43,7 @@ const Home = () => {
         className="cta-button"
         onClick={() => navigate('/Quiz')} // Change '/explorar' to your desired route
       >
-        Explorar las enfermedades
+        Explorar Quiz
       </button>
     </div>
   );
