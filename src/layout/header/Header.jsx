@@ -15,7 +15,7 @@ const Header = () => {
           className="navbar-brand d-flex align-items-center gap-3"
         >
           <img
-            src="/imagenes/Logo.jpg"
+            src="/imagenes/headerLogo.png"
             alt="Logo Heart Care"
             className="custom-img"
           />

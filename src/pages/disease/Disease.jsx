@@ -25,7 +25,9 @@ const Disease = () => {
   return (
     <div className="enfermedad">
       <div className="nombreEnfermedad">{info.nombre}</div>
-
+      <div className="text">
+          <h2 className="pill">Modelo 3D</h2>
+        </div>
       <section className="enfermedadColumna">
         <div className="modeloPal">
           <Suspense fallback={<div>Cargando modelo 1...</div>}>
