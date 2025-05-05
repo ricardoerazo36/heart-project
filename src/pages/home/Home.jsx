@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unknown-property */
 import "./Home.css";
 import { useNavigate } from 'react-router-dom';
-import HeartViewer from './models-3d/HeartViewer';
+import HeartModel from './models-3d/HeartModel';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const Home = () => {
       
       {/* Visualizador del modelo 3D */}
       <div className="model-banner">
-        <HeartViewer height="450px" />
+        <HeartModel height="400px" />
       </div>
 
       <button 
