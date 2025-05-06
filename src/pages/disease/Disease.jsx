@@ -21,49 +21,54 @@ const Disease = () => {
 
   const Modelos = modelos[nombre] || {};
 
-  console.log(Modelos);
   return (
     <div className="enfermedad">
-      <div className="nombreEnfermedad">{info.nombre}</div>
-
-      <section className="enfermedadColumna">
-        <div className="modeloContainer">
-          <h2 className="modelo-titulo">Interactúa con este modelo y conoce más sobre esta enfermedad desplazándote hacia abajo </h2>
-          <div className="modeloPal">
-            <Suspense fallback={<div>Cargando modelo 1...</div>}>
-              {Modelos.Modelo1 ? <Modelos.Modelo1 /> : <img src="/imagenes/fallo.png" alt="fallo" />}
+      <h1 className="nombreEnfermedad">{info.nombre}</h1>
+      
+      {/* Sección "¿Qué es?" */}
+      <div className="seccion-azul">
+        <div className="pill-container">
+          <span className="pill">¿Qué es?</span>
+        </div>
+        <div className="contenido-seccion">
+          <div className="modelo-container">
+            <Suspense fallback={<div>Cargando modelo...</div>}>
+              {Modelos.Modelo1 ? <Modelos.Modelo1 /> : <div className="modelo-placeholder">Modelo no disponible</div>}
             </Suspense>
           </div>
+          <div className="descripcion-container">
+            <p className="descripcion-texto">{info.descripcion}</p>
+          </div>
         </div>
-        <div className="text">
-          <h2 className="pill">¿Qué es?</h2>
-          <p>{info.descripcion}</p>
-        </div>
-      </section>
+      </div>
 
-      <section className="enfermedadRow">
-        <div className="text">
-          <h2 className="pill">Síntomas</h2>
-          <p>{info.sintomas}</p>
+      {/* Sección "¿Cómo afecta?" */}
+      <div className="seccion-sintomas">
+        <h2 className="seccion-titulo">¿Cómo afecta?</h2>
+        <div className="sintomas-grid">
+          <div className="sintomas-izquierda">
+            <div className="sintomas-container">
+              <p className="sintomas-texto">
+                Los síntomas incluyen dificultad para respirar, fatiga, hinchazón en las piernas y tobillos, aceleración del corazón, fatiga, incapacidad para realizar ejercicio o actividades físicas.
+              </p>
+            </div>
+          </div>
+          <div className="sintomas-derecha">
+            <div className="sintomas-imagen">
+              <Suspense fallback={<div>Cargando imagen...</div>}>
+                {Modelos.Modelo2 ? <Modelos.Modelo2 /> : <div className="imagen-placeholder">Imagen no disponible</div>}
+              </Suspense>
+            </div>
+          </div>
         </div>
-        <div className="modeloContainer">
-          <h3 className="modelo-titulo">Interactúa con este modelo</h3>
-          <Suspense fallback={<div>Cargando modelo 2...</div>}>
-            {Modelos.Modelo2 ? <Modelos.Modelo2 /> : <img src="/imagenes/fallo.png" alt="fallo" />}
+      </div>
+
+      {/* Más secciones */}
+      <section className="enfermedadRow">
+        <div className="modeloSec">
+          <Suspense fallback={<div>Cargando modelo 3...</div>}>
+            {Modelos.Modelo3 ? <Modelos.Modelo3 /> : <div className="modelo-placeholder">Modelo no disponible</div>}
           </Suspense>
-          <p className="modelo-instruccion">Continúa explorando para más información</p>
-        </div>
-      </section>
-
-      <section className="enfermedadRow">
-        <div className="modeloContainer">
-          <h3 className="modelo-titulo">Interactúa con este modelo</h3>
-          <div className="modeloSec">
-            <Suspense fallback={<div>Cargando modelo 3...</div>}>
-              {Modelos.Modelo3 ? <Modelos.Modelo3 /> : <img src="/imagenes/fallo.png" alt="fallo" />}
-            </Suspense>
-          </div>
-          <p className="modelo-instruccion">Descubre más detalles sobre esta enfermedad abajo</p>
         </div>
         <div className="text">
           <h2 className="pill">Tratamiento</h2>
@@ -71,21 +76,20 @@ const Disease = () => {
         </div>
       </section>
 
-      <section className="enfermedadRow">
-        <div className="text">
-          <h2 className="pill">Prevención y cuidados</h2>
-          <p>{info.prevencionYcuidado}</p>
-        </div>
-        <div className="modeloContainer">
-          <h3 className="modelo-titulo">Interactúa con este modelo</h3>
-          <div className="modeloSec">
+      {/* Sección de Prevención */}
+      <div className="seccion-prevencion">
+        <h2 className="seccion-titulo">¿Cómo prevenirlo?</h2>
+        <div className="prevencion-grid">
+          <div className="prevencion-izquierda">
+            <p className="prevencion-texto">{info.prevencionYcuidado}</p>
+          </div>
+          <div className="prevencion-derecha">
             <Suspense fallback={<div>Cargando modelo 4...</div>}>
-              {Modelos.Modelo4 ? <Modelos.Modelo4 /> : <img src="/imagenes/fallo.png" alt="fallo" />}
+              {Modelos.Modelo4 ? <Modelos.Modelo4 /> : <div className="modelo-placeholder">Modelo no disponible</div>}
             </Suspense>
           </div>
-          <p className="modelo-instruccion">Gracias por explorar esta información</p>
         </div>
-      </section>
+      </div>
     </div>
   );
 };
