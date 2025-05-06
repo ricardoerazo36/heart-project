@@ -22,7 +22,7 @@ const Modelo1 = () => {
       <Hipertension
         scale={2}
         postion = {[0, 0.2, 0]}
-        rotation = {[0, Math.PI, 0]}
+        rotation = {[1, Math.PI, 0]}
       />
       <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.5, 0]}>
         <planeGeometry args={[4, 4]} />
