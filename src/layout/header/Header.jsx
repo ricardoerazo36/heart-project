@@ -6,7 +6,7 @@ import "./Header.css";
 const Header = () => {
   return (
     <nav
-      style={{ backgroundColor: "#225DCA" }}
+      style={{ backgroundColor: "#225DCA", position :'fixed', width: '100%', zIndex: 1000  }}
       className="navbar navbar-expand-md px-3"
     >
       <div className="container-fluid">
@@ -15,7 +15,7 @@ const Header = () => {
           className="navbar-brand d-flex align-items-center gap-3"
         >
           <img
-            src="/imagenes/Logo.jpg"
+            src="/imagenes/headerLogo.png"
             alt="Logo Heart Care"
             className="custom-img"
           />
