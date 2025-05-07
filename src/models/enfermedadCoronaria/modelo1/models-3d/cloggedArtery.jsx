@@ -3,9 +3,9 @@ import { useGLTF } from '@react-three/drei'
 
 export default function CloggedArtery(props) {
   const { nodes, materials } = useGLTF('/models-3d/clogged-artery.glb')
-
+  console.log("llego")
   return (
-    <group {...props} dispose={null} scale={[200,200,200]}>
+    <group {...props} dispose={null} scale={[150,150,150]}>
       <mesh
         castShadow
         receiveShadow

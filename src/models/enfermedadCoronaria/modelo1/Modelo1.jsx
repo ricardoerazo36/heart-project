@@ -1,13 +1,12 @@
 /* eslint-disable react/no-unknown-property */
 import { Canvas } from "@react-three/fiber";
 import CloggedArtery from "./models-3d/cloggedArtery";
-import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import Lights from "./lights/Lights";
 
 const Modelo1 = () => {
   return (
     <Canvas camera={{ position: [0, 1, 2] }} shadows={true}>
-      <PerspectiveCamera makeDefault position={[0, 0, 5]} />
       <Lights />
       <OrbitControls enableZoom={true} enablePan={true} enableRotate={true} />
       <CloggedArtery />

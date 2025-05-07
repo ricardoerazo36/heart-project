@@ -72,7 +72,7 @@ const Header = () => {
                 </li>
                 <li>
                   <NavLink
-                    to="/enfermedades/hipertensionArterial"
+                    to="/enfermedades/hipertension"
                     className="dropdown-item"
                   >
                     <span className="dropdown-text text-custom-white">Hipertension Arterial</span>

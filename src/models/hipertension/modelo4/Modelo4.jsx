@@ -3,18 +3,18 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import Lights from "../modelo1/lights/Lights";
-import BeatingHeart from "../modelo1/models-3d/BeatingHeart";
+import Care from "../modelo1/models-3d/Care";
 
 
 // Habilitamos usar <shadowMaterial /> en JSX
 
-const Modelo2 = () => {
+const Modelo4 = () => {
   return (
     <Canvas camera={{ position: [0, 1, 2] }} shadows={true}>
       <PerspectiveCamera makeDefault position={[0, 0, 5]} />
       <Lights />
       <OrbitControls enableZoom={true} enablePan={true} enableRotate={true} />
-      <BeatingHeart/>
+      <Care/>
       <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -1, 0]}>
         <planeGeometry args={[5, 5]} />
         <shadowMaterial opacity={0.3} />
@@ -23,4 +23,4 @@ const Modelo2 = () => {
   );
 };
 
-export default Modelo2;
+export default Modelo4;
