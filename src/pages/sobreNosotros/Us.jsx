@@ -2,21 +2,39 @@
 import React from "react";
 import "./Us.css";
 
-// Sample data moved before component
+// Sample data for the team and values
 const values = [
   {
-    title: "Universidad del Valle",
-    description: "Curso de ingenieria de sistemas"
+    title: "Educación Interactiva",
+    description: "Aprendizaje dinámico mediante modelos 3D y contenido interactivo."
+  },
+  {
+    title: "Conocimiento Accesible",
+    description: "Información científica presentada de manera comprensible para todos."
+  },
+  {
+    title: "Prevención y Salud",
+    description: "Enfoque en la prevención de enfermedades y hábitos saludables."
   }
 ];
 
 const teamMembers = [
   {
     id: 1,
-    name: "John Doe",
-    position: "CEO & Founder",
-    bio: "John founded the company with a vision to change the world.",
-    //image: "https://via.placeholder.com/150"]
+    name: "Ricardo Erazo",
+  },
+  {
+    id: 2,
+    name: "Camilo Garcés",
+  },
+  {
+    id: 3,
+    name: "Sergio Sánchez",
+
+  },
+  {
+    id: 4,
+    name: "David Urrego",
   }
 ];
 
@@ -24,27 +42,36 @@ const Us = () => {
   return (
     <div className="about-us-container">
       <section className="hero-section">
-        <h1>Sobre nosotros</h1>
-        <p className="tagline">Somos un grupo de estudiantes de la universidad del Valle,</p>
-        <p>que durante el curso de proyecto integrador I, se nos ha pedido realizar una aplicacion</p>
-        <p>interactiva y educativa utilizando modelos 3D, enfocandonos sobre el corazón humano.</p>
+        <div className="hero-content">
+          <h1>Sobre Nosotros</h1>
+          <p className="tagline">
+            Somos un grupo de estudiantes de la Universidad del Valle que, durante el curso de 
+            Proyecto Integrador I, desarrollamos una aplicación interactiva y educativa utilizando 
+            modelos 3D enfocados en el corazón humano.
+          </p>
+        </div>
       </section>
 
       <section className="our-story">
-        <h2>Sobre la aplicación</h2>
+        <h2>Nuestra Aplicación</h2>
         <div className="story-content">
           <div className="story-text">
-            <p>Esta aplicación busca educar al usuario de forma interactiva sobre el corazón, las posibles enfermedades que lo
-              afectan y a como prevenirlas con varios consejos simples pero efectivos.
+            <p>
+              Esta aplicación busca educar de forma interactiva sobre el corazón humano, 
+              las posibles enfermedades que lo afectan y cómo prevenirlas con consejos 
+              simples pero efectivos.
             </p>
-            <p>Esta aplicación esta diseñada utilizando modelos 3d para que el usuario tenga una ayuda visual a la hora de
-              aprender sobre las complejidades del corazón humano. </p>
+            <p>
+              Utilizamos modelos 3D para proporcionar una ayuda visual que facilite la 
+              comprensión de las complejidades del corazón humano, haciendo el aprendizaje 
+              más accesible e intuitivo.
+            </p>
           </div>
         </div>
       </section>
 
       <section className="our-values">
-        <h2>Sobre el contenido</h2>
+        <h2>Nuestros Valores</h2>
         <div className="values-grid">
           {values.map((value, index) => (
             <div key={index} className="value-card">
@@ -53,6 +80,28 @@ const Us = () => {
             </div>
           ))}
         </div>
+      </section>
+
+      <section className="team-section">
+        <h2>Nuestro Equipo</h2>
+        <div className="team-grid">
+          {teamMembers.map((member) => (
+            <div key={member.id} className="team-card">
+              <div className="team-image-placeholder"></div>
+              <h3>{member.name}</h3>
+              <h4>{member.position}</h4>
+              <p>{member.bio}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="university-section">
+        <h2>Universidad del Valle</h2>
+        <p>
+          Proyecto desarrollado en el marco del curso de Ingeniería de Sistemas,
+          Proyecto Integrador I, Universidad del Valle.
+        </p>
       </section>
     </div>
   );

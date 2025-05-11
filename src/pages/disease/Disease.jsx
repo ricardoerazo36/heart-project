@@ -48,9 +48,7 @@ const Disease = () => {
         <div className="sintomas-grid">
           <div className="sintomas-izquierda">
             <div className="sintomas-container">
-              <p className="sintomas-texto">
-                Los síntomas incluyen dificultad para respirar, fatiga, hinchazón en las piernas y tobillos, aceleración del corazón, fatiga, incapacidad para realizar ejercicio o actividades físicas.
-              </p>
+              <p className="sintomas-texto">{info.sintomas}</p>
             </div>
           </div>
           <div className="sintomas-derecha">
