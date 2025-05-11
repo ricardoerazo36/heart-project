@@ -5,7 +5,7 @@ import RealisticHeart from "../models-3d/realisticHeart";
 import { useFrame } from "@react-three/fiber";
 
 const Scene = () => {
-  const [heartScale, setHeartScale] = useState(4);
+  const [heartScale, setHeartScale] = useState(6);
   const [isAnimationPaused, setIsAnimationPaused] = useState(false);
   
   // Manejo de teclado para pausar/reanudar la animación con la tecla E
@@ -28,13 +28,10 @@ const Scene = () => {
     
     const time = clock.getElapsedTime();
     
-    // Simulación de latido cardíaco con una función más pronunciada
-    // Usa una combinación de funciones trigonométricas para simular el latido
+    // Simulación de latido cardíaco
     const baseScale = 4;
     const beatIntensity = 0.4; // Intensidad del latido
-    const beatSpeed = 1.2; // Velocidad del latido (ajustar para latidos por minuto)
-    
-    // Ecuación que simula un latido cardíaco con una subida rápida y bajada más lenta
+    const beatSpeed = 1.2; // Velocidad del latido
     const heartBeat = Math.pow(Math.sin(time * beatSpeed) * 0.5 + 0.5, 2) * beatIntensity;
     
     setHeartScale(baseScale + heartBeat);
@@ -42,8 +39,6 @@ const Scene = () => {
 
   return (
     <>
-      {/* Fondo claro para mejor visibilidad */}
-      <color attach="background" args={["#f8f8f8"]} />
       <Sky 
         distance={450000}
         sunPosition={[0, 1, 0]}
@@ -78,7 +73,7 @@ const Scene = () => {
       <RealisticHeart
         scale={[heartScale, heartScale, heartScale]}
         position={[0, 0.2, 0]}
-        rotation={[0, Math.PI / 2, 0]}
+        rotation={[0, -0.2, 0]}
         castShadow
         receiveShadow
       />

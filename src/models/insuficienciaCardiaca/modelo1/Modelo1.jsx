@@ -7,7 +7,7 @@ import { Suspense } from "react";
 
 const Modelo1 = () => {
   return (
-    <Canvas shadows="soft" dpr={[1, 2]} camera={{ position: [0, 0, 4], fov: 50 }}>
+    <Canvas shadows="soft" dpr={[1, 2]} camera={{ position: [0, 0, 2.5], fov: 50 }}>
       {/* Controles de cámara */}
       <OrbitControls 
         enableZoom={true} 
