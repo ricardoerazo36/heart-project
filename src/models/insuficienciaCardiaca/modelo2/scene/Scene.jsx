@@ -1,20 +1,20 @@
 /* eslint-disable react/no-unknown-property */
 import { useState, useEffect, useRef } from "react";
 import { Text, Html, Sky } from "@react-three/drei";
-import Pacemaker from "../models-3d/pacemaker";
+import RealisticHeart from "../models-3d/realisticHeart";
 import { useFrame } from "@react-three/fiber";
 
 const Scene = () => {
-  const [pacemakerScale, setPacemakerScale] = useState(5);
+  const [heartScale, setHeartScale] = useState(2);
   const [showInfo, setShowInfo] = useState(false);
   const [hoverText, setHoverText] = useState(false);
   // Estado para controlar la pausa de la animación
   const [isAnimationPaused, setIsAnimationPaused] = useState(false);
   
-  // Manejo de teclado solo para pausar/reanudar la animación
+  // Manejo de teclado para pausar/reanudar la animación con la tecla E
   useEffect(() => {
     const handleKeyDown = (e) => {
-      if (e.key === 'm' || e.key === 'M') {
+      if (e.key === 'e' || e.key === 'E') {
         setIsAnimationPaused(prev => !prev);
       }
     };
@@ -25,22 +25,16 @@ const Scene = () => {
     };
   }, []);
 
-  // Animación que simula un pulso eléctrico pequeño y regular cada 1.2 segundos
+  // Animación modificada para un rango más controlado y que no aleje el corazón de la plataforma
   useFrame(({ clock }) => {
     if (isAnimationPaused) {
       return;
     }
-        const time = clock.getElapsedTime();
-    const pulseCycle = time % 1.2; // Ciclo de 1.2 segundos (50 pulsos por minuto)
     
-    let pulseScale = 1;
+    const time = clock.getElapsedTime();
+    const dilationFactor = 2 + 1 * Math.sin(time * 1);
     
-    if (pulseCycle < 0.15) {
-      // Simulando el impulso eléctrico
-      pulseScale = 1 + 0.03 * Math.sin(pulseCycle * Math.PI / 0.15);
-    }
-    
-    setPacemakerScale(5 * pulseScale);
+    setHeartScale(dilationFactor);
   });
 
   return (
@@ -88,12 +82,12 @@ const Scene = () => {
         onClick={() => setShowInfo(!showInfo)}
         scale={hoverText ? 1.2 : 1}
       >
-        Marcapasos
+        Corazón Dilatado
       </Text>
       
-      {/* Modelo del marcapasos */}
-      <Pacemaker
-        scale={pacemakerScale}
+      {/* Modelo del corazón */}
+      <RealisticHeart
+        scale={[heartScale, heartScale, heartScale]}
         position={[0, 0.0, 0]}
         rotation={[0, 1.2, 0]}
         onClick={() => setShowInfo(!showInfo)}
@@ -101,23 +95,24 @@ const Scene = () => {
         receiveShadow
       />
       
-      {/* Plataforma mejorada para mostrar sombras */}
-      <mesh position={[0, -1, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
-        <planeGeometry args={[20, 20]} />
-        <meshStandardMaterial color="#ffffff" />
+      <mesh position={[0, -0.7, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
+        <planeGeometry args={[10, 10]} />
+        <meshStandardMaterial 
+          color="#f0f0f0" 
+          roughness={0.3} 
+          metalness={0.1}
+        />
       </mesh>
       
-      
-      {/* Elemento HTML interactivo */}
+      {}
       {showInfo && (
-        <Html position={[0, -0.4, 0]} center style={{ width: '220px' }}>
+        <Html position={[0, 0, 0]} center style={{ width: '220px' }}>
           <div style={{ 
             backgroundColor: 'white', 
             padding: '12px', 
             borderRadius: '8px',
             boxShadow: '0 2px 10px rgba(0,0,0,0.2)',
             textAlign: 'center',
-            fontFamily: 'Arial',
             fontSize: '14px',
             pointerEvents: 'auto'
           }}>
@@ -125,18 +120,18 @@ const Scene = () => {
               margin: '0 0 10px', 
               color: '#2b2d42',
               fontSize: '16px'
-            }}>Marcapasos Cardíaco</h3>
+            }}>Corazón con Insuficiencia Cardíaca</h3>
             <p style={{ 
               margin: '0 0 12px', 
               fontSize: '13px',
               lineHeight: '1.4'
             }}>
-              Este dispositivo médico envía impulsos eléctricos para regular el ritmo cardíaco.
+              Se observa cómo el corazón se va dilatando, un signo típico de la insuficiencia cardíaca.
             </p>
             <div style={{ marginBottom: '12px' }}>
               <p style={{ fontSize: '12px', margin: '0 0 8px' }}>Controles:</p>
               <ul style={{ fontSize: '11px', textAlign: 'left', paddingLeft: '20px', margin: '0' }}>
-                <li>M: Pausar/reanudar animación</li>
+                <li>E: Pausar/reanudar animación</li>
               </ul>
             </div>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
