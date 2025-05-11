@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import { OrbitControls, PerspectiveCamera, Stats } from "@react-three/drei";
 import Lights from "./lights/Lights";
 import Scene from "./scene/Scene";
 import { Suspense } from "react";
