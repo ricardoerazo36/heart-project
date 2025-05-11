@@ -1,24 +1,16 @@
-/*
 footer {
-    background-color: #225dca;
-    color: white !important;
-  }
-  
-  hr {
-    margin-top: 0;
-    margin-bottom: 10px; 
-  }
-  
-  a {
-    text-decoration: none;
-  }
-  
-  p {
-    color: white;
-  }
+  background-color: #225dca;
+  color: white !important;
+}
 
+hr {
+  margin-top: 0;
+  margin-bottom: 10px; /* Ajusta según sea necesario */
+}
 
-*/
+a {
+  text-decoration: none;
+}
 
 footer {
   background-color: #225dca;
@@ -51,4 +43,5 @@ footer h3 {
   width: 100%;
   padding: 10px 0 0 20px;  
   font-size: 0.9rem;
+
 }
