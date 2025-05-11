@@ -5,13 +5,13 @@ import { useFrame } from '@react-three/fiber'
 
 export default function CloggedArtery(props) {
   const { nodes, materials, scene } = useGLTF('/models-3d/clogged-artery.glb')
-  const arteryRef = useRef()
+  const cloggedArteryRef = useRef()
 
   // Animación de rotación + latido (sube y baja suavemente)
   useFrame((state, delta) => {
-    if (arteryRef.current) {
-      arteryRef.current.rotation.y += delta * 0.3 // rotación suave
-      arteryRef.current.position.y = Math.sin(state.clock.elapsedTime * 2) * 0.05 // latido suave
+    if (cloggedArteryRef.current) {
+      cloggedArteryRef.current.rotation.y += delta * 0.3 // rotación suave
+      cloggedArteryRef.current.position.y = Math.sin(state.clock.elapsedTime * 2) * 0.05 // latido suave
     }
   })
 
@@ -25,9 +25,9 @@ export default function CloggedArtery(props) {
     })
   }, [scene])
 
-  console.log("llego")
+  console.log("llego modelo 1")
   return (
-    <group ref={arteryRef} {...props} dispose={null} scale={[200,200,200]}>
+    <group ref={cloggedArteryRef} {...props} dispose={null} scale={[200,200,200]}>
       <mesh
         castShadow
         receiveShadow
