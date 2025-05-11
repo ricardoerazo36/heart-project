@@ -2,8 +2,8 @@
 import { useGLTF } from '@react-three/drei'
 import { useState } from 'react'
 
-export default function DilatedHeart(props) {
-  const { nodes, materials } = useGLTF('/models-3d/dilated-heart.glb')
+export default function Pacemaker(props) {
+  const { nodes, materials } = useGLTF('/models-3d/pacemaker.glb')
   const [hovered, setHovered] = useState(false)
   
   return (
@@ -11,8 +11,8 @@ export default function DilatedHeart(props) {
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Heart.geometry}
-        material={materials.HeartMaterial}
+        geometry={nodes.PaceMaker.geometry}
+        material={materials.PacemakerMaterial}
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
       />
@@ -20,4 +20,4 @@ export default function DilatedHeart(props) {
   )
 }
 
-useGLTF.preload('/models-3d/dilated-heart.glb')
+useGLTF.preload('/models-3d/pacemaker.glb')
