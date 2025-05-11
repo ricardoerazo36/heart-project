@@ -6,7 +6,7 @@ import "./Header.css";
 const Header = () => {
   return (
     <nav
-      style={{ backgroundColor: "#225DCA" }}
+      style={{ backgroundColor: "#225DCA", position :'fixed', width: '100%', zIndex: 1000  }}
       className="navbar navbar-expand-md px-3"
     >
       <div className="container-fluid">
