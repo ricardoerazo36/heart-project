@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unknown-property */
-import { useGLTF } from "@react-three/drei";
+import { useGLTF, Html } from "@react-three/drei";
 import { useRef, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 
@@ -39,6 +39,25 @@ export default function Artery(props) {
     });
   }, [scene]);
 
+  // ---- Elemento HTML 3D: Etiqueta flotante ----
+  const Label3D = () => (
+    <Html
+      position={[0, 0.005, 0]}  
+      center
+      style={{
+        background: "rgba(0, 0, 0, 0.7)",  
+        color: "white",
+        padding: "6px 12px",
+        borderRadius: "8px",
+        fontSize: "14px",
+        fontFamily: "Arial, sans-serif",
+        whiteSpace: "nowrap",
+      }}
+    >
+      Arteria Coronaria Sana (Simulación)
+    </Html>
+  );
+
   return (
     <group
       ref={arteryRef}
@@ -55,6 +74,7 @@ export default function Artery(props) {
         geometry={nodes.Artery.geometry}
         material={materials.ArteryMaterial}
       />
+      <Label3D />
     </group>
   );
 }
