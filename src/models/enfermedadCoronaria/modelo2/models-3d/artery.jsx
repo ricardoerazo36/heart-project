@@ -4,19 +4,32 @@ import { useRef, useEffect } from "react";
 import { useFrame } from "@react-three/fiber";
 
 export default function Artery(props) {
-  //const ArteryRef = useRef()
   const { nodes, materials, scene } = useGLTF("/models-3d/artery.glb");
   const arteryRef = useRef();
-  // Animación de rotación + latido (sube y baja suavemente)
-  useFrame((state, delta) => {
+
+  // ---- Rotación con flechas del teclado ----
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (arteryRef.current) {
+        if (e.key === "ArrowRight") {
+          arteryRef.current.rotation.y += 0.1; 
+        } else if (e.key === "ArrowLeft") {
+          arteryRef.current.rotation.y -= 0.1; 
+        }
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  // Animación de latido 
+  useFrame((state) => {
     if (arteryRef.current) {
-      arteryRef.current.rotation.y += delta * 0.3; // rotación suave
-      arteryRef.current.position.y =
-        Math.sin(state.clock.elapsedTime * 2) * 0.05; // latido suave
+      arteryRef.current.position.y = Math.sin(state.clock.elapsedTime * 2) * 0.05;
     }
   });
 
-  // Activar sombras en las mallas
+  // Activar sombras
   useEffect(() => {
     scene.traverse((child) => {
       if (child.isMesh) {
@@ -26,9 +39,16 @@ export default function Artery(props) {
     });
   }, [scene]);
 
-  console.log("llego modelo 2");
   return (
-    <group ref={arteryRef} {...props} dispose={null} scale={[200, 200, 200]}>
+    <group
+      ref={arteryRef}
+      {...props}
+      dispose={null}
+      scale={[200, 200, 200]}
+      onClick={() => console.log("Modelo clickeado")}
+      onPointerOver={() => (document.body.style.cursor = "pointer")}
+      onPointerOut={() => (document.body.style.cursor = "default")}
+    >
       <mesh
         castShadow
         receiveShadow

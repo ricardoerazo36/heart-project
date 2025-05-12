@@ -11,8 +11,8 @@ const Lights = () => {
       />
 
       <pointLight
-        position={[0, 3, 2]}
-        intensity={25}
+        position={[1, 3, 1]}
+        intensity={50}
         color="#ffeb3b"
         distance={10}
         decay={1}
