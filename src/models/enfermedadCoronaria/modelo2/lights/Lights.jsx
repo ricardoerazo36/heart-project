@@ -4,24 +4,26 @@ import { Environment } from "@react-three/drei";
 const Lights = () => {
   return (
     <>
-      {/* Un ambient light suave para subir iluminación global */}
-      <ambientLight intensity={2} />
+      <hemisphereLight
+        intensity={0.8}
+        groundColor="#cccccc"
+        skyColor="#ffffff"
+      />
 
-      {/* Un directional light suave, como luz extra de relleno */}
-      <directionalLight
-        position={[5, 15, 10]}
-        intensity={18}
+      <pointLight
+        position={[0, 3, 2]}
+        intensity={25}
+        color="#ffeb3b"
+        distance={10}
+        decay={1}
         castShadow
         shadow-mapSize-width={1024}
         shadow-mapSize-height={1024}
-        shadow-radius={2}
       />
 
-      {/* Entorno HDRI para reflejos y atmósfera */}
       <Environment preset="sunset" background={false} />
     </>
   );
 };
 
 export default Lights;
-
