@@ -3,12 +3,12 @@ import { Canvas } from "@react-three/fiber";
 import CloggedArtery from "./models-3d/cloggedArtery";
 import { OrbitControls } from "@react-three/drei";
 import Lights from "./lights/Lights";
-import Scene from "./scene/Scene";
+//import Scene from "./scene/Scene";
 
 const Modelo1 = () => {
   return (
     <Canvas camera={{ position: [0, 1, 2] }} shadows={true}>
-      <Scene />
+      {/*<Scene />*/}
       <Lights />
       <OrbitControls enableZoom={true} enablePan={true} enableRotate={true} />
       <CloggedArtery />

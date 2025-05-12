@@ -1,20 +1,21 @@
 /* eslint-disable react/no-unknown-property */
 import { useGLTF, Html } from "@react-three/drei";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 
 export default function Artery(props) {
   const { nodes, materials, scene } = useGLTF("/models-3d/artery.glb");
   const arteryRef = useRef();
+  const [showInfo, setShowInfo] = useState(false);
 
   // ---- Rotación con flechas del teclado ----
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (arteryRef.current) {
         if (e.key === "ArrowRight") {
-          arteryRef.current.rotation.y += 0.1; 
+          arteryRef.current.rotation.y += 0.1;
         } else if (e.key === "ArrowLeft") {
-          arteryRef.current.rotation.y -= 0.1; 
+          arteryRef.current.rotation.y -= 0.1;
         }
       }
     };
@@ -22,10 +23,11 @@ export default function Artery(props) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
-  // Animación de latido 
+  // Animación de latido
   useFrame((state) => {
     if (arteryRef.current) {
-      arteryRef.current.position.y = Math.sin(state.clock.elapsedTime * 2) * 0.05;
+      arteryRef.current.position.y =
+        Math.sin(state.clock.elapsedTime * 2) * 0.05;
     }
   });
 
@@ -42,10 +44,10 @@ export default function Artery(props) {
   // ---- Elemento HTML 3D: Etiqueta flotante ----
   const Label3D = () => (
     <Html
-      position={[0, 0.005, 0]}  
+      position={[0, 0.005, 0]}
       center
       style={{
-        background: "rgba(0, 0, 0, 0.7)",  
+        background: "rgba(0, 0, 0, 0.7)",
         color: "white",
         padding: "6px 12px",
         borderRadius: "8px",
@@ -64,7 +66,7 @@ export default function Artery(props) {
       {...props}
       dispose={null}
       scale={[200, 200, 200]}
-      onClick={() => console.log("Modelo clickeado")}
+      onClick={() => setShowInfo(true)}
       onPointerOver={() => (document.body.style.cursor = "pointer")}
       onPointerOut={() => (document.body.style.cursor = "default")}
     >
@@ -74,6 +76,59 @@ export default function Artery(props) {
         geometry={nodes.Artery.geometry}
         material={materials.ArteryMaterial}
       />
+      {showInfo && (
+        <Html center position={[0, 0, 0]}>
+          <div
+            style={{
+              backgroundColor: "white",
+              padding: "15px",
+              borderRadius: "10px",
+              boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
+              width: "250px",
+              textAlign: "center",
+              fontFamily: "Arial, sans-serif",
+            }}
+          >
+            <h3
+              style={{
+                margin: "0 0 10px 0",
+                color: "#d32f2f",
+                fontSize: "18px",
+              }}
+            >
+              Arteria Coronaria
+            </h3>
+            <p
+              style={{
+                margin: "0 0 12px 0",
+                color: "#555",
+                fontSize: "14px",
+                lineHeight: "1.4",
+              }}
+            >
+              Usa las teclas ← y → para rotar el modelo.
+            </p>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setShowInfo(false);
+              }}
+              style={{
+                padding: "4px 16px",
+                backgroundColor: "#d32f2f",
+                color: "white",
+                border: "none",
+                borderRadius: "4px",
+                cursor: "pointer",
+                fontSize: "14px",
+                width: "100%",
+              }}
+            >
+              Cerrar
+            </button>
+          </div>
+        </Html>
+      )}
       <Label3D />
     </group>
   );
