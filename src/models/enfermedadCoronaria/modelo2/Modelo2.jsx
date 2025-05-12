@@ -3,16 +3,22 @@ import { Canvas } from "@react-three/fiber";
 import Artery from "./models-3d/artery";
 import { OrbitControls } from "@react-three/drei";
 import Lights from "./lights/Lights";
+import Scene from "./scene/Scene";
 
 const Modelo2 = () => {
   return (
-    <Canvas camera={{ position: [0, 1, 2] }} shadows={true}>
-      <Lights/>
-      <OrbitControls enableZoom={true} enablePan={true} enableRotate={true} />
+    <Canvas camera={{ position: [0, 1, 2] }} shadows>
+      <Scene />
+      <Lights />
+      <OrbitControls enableZoom enablePan enableRotate />
       <Artery />
-      <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -1, 0]}>
-        <planeGeometry args={[5, 5]} />
-        <shadowMaterial opacity={0.3} />
+      <mesh
+        receiveShadow
+        position={[0, -1.5, 0]}
+        rotation={[-Math.PI / 2, 0, 0]}
+      >
+        <planeGeometry args={[10, 10]} />
+        <meshStandardMaterial color="#202020" />
       </mesh>
     </Canvas>
   );
