@@ -27,7 +27,7 @@ const Footer = () => {
               </li>
               <li>
                 <NavLink
-                  to="/enfermedades/coronaria"
+                  to="/enfermedades/enfermedadCoronaria"
                   className="text-decoration-none text-custom-white"
                 >
                   Enfermedad Coronaria
