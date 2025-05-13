@@ -1,0 +1,8 @@
+.title h1 {
+    text-shadow:
+        0 0 04px antiquewhite,
+        0 0 8px antiquewhite,
+        0 0 16px antiquewhite;
+
+    font-size: x-large;
+}

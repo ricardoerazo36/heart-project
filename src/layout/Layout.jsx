@@ -7,7 +7,7 @@ const Layout = ({ children }) => {
   return (
     <div className="layout">
       <Header />
-      <main className="layout-content">{children}</main>
+      <main style={{paddingTop: '80px'}} className="layout-content">{children}</main>
       <Footer />
     </div>
   );
