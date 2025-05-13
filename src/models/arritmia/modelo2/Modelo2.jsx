@@ -11,7 +11,7 @@ import BeatingHeart from "../modelo1/models-3d/BeatingHeart";
 const Modelo2 = () => {
   return (
     <Canvas camera={{ position: [0, 1, 2] }} shadows={true}>
-      <PerspectiveCamera makeDefault position={[0, 0, 5]} />
+      <PerspectiveCamera makeDefault position={[0, 0, 0.5]} />
       <Lights />
       <OrbitControls enableZoom={true} enablePan={true} enableRotate={true} />
       <BeatingHeart/>
