@@ -80,7 +80,7 @@ const Scene = () => {
       <Text
         position={[0, 1.5, 0]}
         fontSize={0.15}
-        color="#FF6B6B"
+        color="#000000"
         anchorX="center"
         anchorY="middle"
         onPointerOver={() => setHoverText(true)}

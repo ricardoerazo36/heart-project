@@ -54,7 +54,7 @@ const Scene = () => {
         position={[0, 1.2, 0]}
         rotation={[0, 0, 0]}
         fontSize={0.15}
-        color="#FF6B6B"
+        color="#000000"
         anchorX="center"
         anchorY="middle"
         onPointerOver={() => setHoverText(true)}
@@ -62,7 +62,7 @@ const Scene = () => {
         onClick={() => setShowInfo(!showInfo)}
         scale={hoverText ? 1.2 : 1}
       >
-        Insuficiencia Cardíaca
+        Corazón Dilatado
       </Text>
       
       {/* Modelo del corazón */}
@@ -96,7 +96,7 @@ const Scene = () => {
               fontSize: '13px',
               lineHeight: '1.4'
             }}>
-              Presiona las flechas para rotar.
+              Presiona las flechas ← y → para rotar.
             </p>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <button 

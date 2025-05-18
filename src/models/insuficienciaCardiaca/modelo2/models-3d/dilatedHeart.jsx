@@ -13,8 +13,14 @@ export default function DilatedHeart(props) {
         receiveShadow
         geometry={nodes.Heart.geometry}
         material={materials.HeartMaterial}
-        onPointerOver={() => setHovered(true)}
-        onPointerOut={() => setHovered(false)}
+        onPointerOver={() => {
+          setHovered(true);
+          document.body.style.cursor = "pointer";
+        }}
+        onPointerOut={() => {
+          setHovered(false);
+          document.body.style.cursor = "default";
+        }}
       />
     </group>
   )

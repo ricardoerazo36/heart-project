@@ -13,8 +13,14 @@ export default function Pacemaker(props) {
         receiveShadow
         geometry={nodes.PaceMaker.geometry}
         material={materials.PacemakerMaterial}
-        onPointerOver={() => setHovered(true)}
-        onPointerOut={() => setHovered(false)}
+        onPointerOver={() => {
+          setHovered(true);
+          document.body.style.cursor = "pointer";
+        }}
+        onPointerOut={() => {
+          setHovered(false);
+          document.body.style.cursor = "default";
+        }}
       />
     </group>
   )
