@@ -16,24 +16,46 @@ const Scene = () => {
   const runnerRef = useRef();
   const runnerGroupRef = useRef();
   
+  // Estado para controlar la velocidad de animación
+  const [animationSpeed, setAnimationSpeed] = useState(1);
+  
+  // Manejo de teclado para controlar la velocidad de animación
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'r' || e.key === 'R') {
+        // Velocidad rápida
+        setAnimationSpeed(2);
+      } else if (e.key === 'l' || e.key === 'L') {
+        // Velocidad lenta
+        setAnimationSpeed(0.5);
+      } else if (e.key === 'n' || e.key === 'N') {
+        // Velocidad normal (default)
+        setAnimationSpeed(1);
+      }
+    };
+    
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
   
   useFrame(({ clock }) => {
     const time = clock.getElapsedTime();
   
-    
-    // Animación para el corredor
+    // Animación para el corredor con velocidad ajustable
     if (runnerRef.current) {
-      // Movimiento de rebote suave para simular carrera
-      runnerRef.current.position.y = -2.05 + Math.abs(Math.sin(time * 8)) * 0.08;
+      // Movimiento de rebote suave para simular carrera - afectado por la velocidad
+      runnerRef.current.position.y = -2.05 + Math.abs(Math.sin(time * 8 * animationSpeed)) * 0.08;
       
-      // Ligera inclinación adelante y atrás para simular el movimiento de carrera
-      runnerRef.current.rotation.x = Math.sin(time * 8) * 0.04;
+      // Ligera inclinación adelante y atrás para simular el movimiento de carrera - afectado por la velocidad
+      runnerRef.current.rotation.x = Math.sin(time * 8 * animationSpeed) * 0.04;
     }
     
-    // Animación para el grupo completo del corredor (rotación completa)
+    // Animación para el grupo completo del corredor (rotación completa) - afectado por la velocidad
     if (runnerGroupRef.current) {
-      // Movimiento de balanceo ligero
-      runnerGroupRef.current.rotation.y = Math.PI / 4 + Math.sin(time * 1.5) * 0.05;
+      // Movimiento de balanceo ligero - afectado por la velocidad
+      runnerGroupRef.current.rotation.y = Math.PI / 4 + Math.sin(time * 1.5 * animationSpeed) * 0.05;
     }
   });
 
@@ -137,13 +159,21 @@ const Scene = () => {
             }}>Beneficios del Ejercicio</h3>
             <p style={{ 
               margin: '0 0 12px', 
-              fontSize: '13px',
+              fontSize: '12px',
               lineHeight: '1.4'
             }}>
               El ejercicio cardiovascular regular fortalece el músculo cardíaco, mejora la 
               circulación sanguínea y reduce el riesgo de insuficiencia cardíaca. Se recomienda 
-              realizar al menos 150 minutos de actividad moderada a la semana.
+              realizar al menos 150 minutos de actividad por semana.
             </p>
+            <div style={{ marginBottom: '12px' }}>
+              <p style={{ fontSize: '12px', margin: '0 0 8px' }}>Controles:</p>
+              <ul style={{ fontSize: '11px', textAlign: 'left', paddingLeft: '20px', margin: '0' }}>
+                <li>R: Velocidad rápida</li>
+                <li>L: Velocidad lenta</li>
+                <li>N: Velocidad normal</li>
+              </ul>
+            </div>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <button 
                 style={{ 
