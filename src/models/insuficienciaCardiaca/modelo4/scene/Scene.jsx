@@ -1,18 +1,28 @@
 /* eslint-disable react/no-unknown-property */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Text, Html, Environment, Stars, Sky } from "@react-three/drei";
-import { useThree } from "@react-three/fiber";
+import { useThree, useFrame } from "@react-three/fiber";
 import Runner from "../models-3d/runner";
 
 
 const Scene = () => {
   const [showInfo, setShowInfo] = useState(false);
   const [hoverText, setHoverText] = useState(false);
+  const [titlePosition, setTitlePosition] = useState([0, 2.2, 0]);
   const { scene } = useThree();
+  
+  // Animación para el título
+  useFrame(({ clock }) => {
+    const time = clock.getElapsedTime();
+    setTitlePosition([
+      0,
+      2.2 + Math.sin(time * 0.8) * 0.1,
+      0
+    ]);
+  });
 
   return (
     <>
-      
       <Environment preset="sunset" background={false} />
       <Sky
         distance={450000}
@@ -57,38 +67,21 @@ const Scene = () => {
         />
       </mesh>
 
-      {/* Texto superior */}
+      
+      {/* Título centrado */}
       <Text
-        position={[0, 1, 0]}
-        rotation={[0, 0, 0]}
-        fontSize={0.5}
-        color="#ffffff"
+        position={[0, 1.8, 0]}
+        rotation={[0, Math.PI / 4, 0]}
+        fontSize={0.25}
+        color="#000000"
         anchorX="center"
         anchorY="middle"
         onPointerOver={() => setHoverText(true)}
         onPointerOut={() => setHoverText(false)}
         onClick={() => setShowInfo(!showInfo)}
         scale={hoverText ? 1.2 : 1}
-        material-toneMapped={false}
-        material-emissive="#ffffff"
-        material-emissiveIntensity={0.5}
       >
-        Ejercicio Regular
-      </Text>
-
-      {/* Texto inferior */}
-      <Text
-        position={[0, -3.5, 0]}
-        rotation={[0, 0, 0]}
-        fontSize={0.25}
-        color="#dfe6e9"
-        anchorX="center"
-        anchorY="middle"
-        material-toneMapped={false}
-        material-emissive="#dfe6e9"
-        material-emissiveIntensity={0.3}
-      >
-        Fortalece tu corazón
+        Descubre los Beneficios del Ejercicio
       </Text>
 
       {/* Modelo 3D */}
@@ -99,53 +92,48 @@ const Scene = () => {
         onClick={() => setShowInfo(!showInfo)}
       />
 
-      {/* HTML informativo */}
+      {/* HTML informativo*/}
       {showInfo && (
-        <Html position={[0, -0.5, 0]} center style={{ width: '280px' }}>
-          <div style={{
-            backgroundColor: 'rgba(255, 255, 255, 0.95)',
-            padding: '16px',
-            borderRadius: '12px',
-            boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+        <Html position={[0, -0.5, 0]} center style={{ width: '260px' }}>
+          <div style={{ 
+            backgroundColor: 'white', 
+            padding: '12px', 
+            borderRadius: '8px',
+            boxShadow: '0 2px 10px rgba(0,0,0,0.2)',
             textAlign: 'center',
-            fontFamily: 'Arial, sans-serif',
+            fontFamily: 'Arial',
             fontSize: '14px',
-            pointerEvents: 'auto',
-            backdropFilter: 'blur(10px)'
+            pointerEvents: 'auto'
           }}>
-            <h3 style={{
-              margin: '0 0 12px',
-              color: '#2d3436',
-              fontSize: '18px',
-              fontWeight: 'bold'
-            }}>Ejercicio Regular</h3>
-            <p style={{
-              margin: '0 0 15px',
+            <h3 style={{ 
+              margin: '0 0 10px', 
+              color: '#2b2d42',
+              fontSize: '16px'
+            }}>Beneficios del Ejercicio</h3>
+            <p style={{ 
+              margin: '0 0 12px', 
               fontSize: '13px',
-              lineHeight: '1.5',
-              color: '#636e72'
+              lineHeight: '1.4'
             }}>
-              El ejercicio cardiovascular regular es fundamental para mantener un corazón saludable
-              y prevenir la insuficiencia cardíaca. Actividades como correr, caminar y nadar
-              fortalecen el músculo cardíaco y mejoran la circulación.
+              El ejercicio cardiovascular regular fortalece el músculo cardíaco, mejora la 
+              circulación sanguínea y reduce el riesgo de insuficiencia cardíaca. Se recomienda 
+              realizar al menos 150 minutos de actividad moderada a la semana.
             </p>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <button
-                style={{
-                  width: '120px',
-                  padding: '8px 0',
-                  background: 'linear-gradient(135deg, #74b9ff, #0984e3)',
-                  border: 'none',
-                  borderRadius: '6px',
+              <button 
+                style={{ 
+                  width: '100%',
+                  maxWidth: '120px',
+                  padding: '6px 0', 
+                  background: '#FF6B6B', 
+                  border: 'none', 
+                  borderRadius: '4px', 
                   color: 'white',
                   fontSize: '14px',
                   fontWeight: 'bold',
-                  cursor: 'pointer',
-                  transition: 'transform 0.2s'
+                  cursor: 'pointer'
                 }}
                 onClick={() => setShowInfo(false)}
-                onMouseOver={(e) => e.target.style.transform = 'scale(1.05)'}
-                onMouseOut={(e) => e.target.style.transform = 'scale(1)'}
               >
                 Cerrar
               </button>

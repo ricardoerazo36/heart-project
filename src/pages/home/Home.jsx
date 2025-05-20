@@ -66,7 +66,7 @@ const Home = () => {
         </div>
       </div>
 
-      {/* Sección "¡Sumérgete en tu corazón!" con tarjetas de experiencia 3D y datos curiosos */}
+      {/* Sección "¡Sumérgete en tu corazón!" con tarjetas de experiencia 3D y datos curiosos 
       <h2 className="section-title" style={{ textAlign: 'center', margin: '60px 0 40px' }}>
         ¡Sumérgete en tu corazón!
       </h2>
@@ -82,7 +82,7 @@ const Home = () => {
           <button className="info-button">Explorar</button>
         </div>
       </div>
-
+      */}
       <button 
         className="cta-button"
         onClick={() => navigate('/Quiz')}
