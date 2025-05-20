@@ -6,10 +6,9 @@ const Lights = () => {
 
   return (
     <>
-      {/* Iluminación cálida para corazón saludable */}
+      
       <ambientLight intensity={1.2} color="#fff5e6" />
       
-      {/* Luz direccional principal con tono rojizo cálido */}
       <directionalLight
         ref={directionalLightRef}
         castShadow
@@ -25,14 +24,14 @@ const Lights = () => {
         />
       </directionalLight>
       
-      {/* Luz de relleno cálida frontal */}
+      
       <pointLight 
         position={[0, 2, 8]} 
         intensity={4} 
         color="#ffeedd" 
       />
       
-      {/* Luz lateral suave para realzar la forma */}
+      
       <spotLight
         position={[-5, 5, 5]}
         angle={0.4}

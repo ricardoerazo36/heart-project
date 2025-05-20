@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 import { useState, useEffect } from "react";
-import { Sky } from "@react-three/drei";
+import { Sky, Environment } from "@react-three/drei";
 import RealisticHeart from "../models-3d/realisticHeart";
 import { useFrame } from "@react-three/fiber";
 
@@ -39,6 +39,9 @@ const Scene = () => {
 
   return (
     <>
+      
+      <Environment preset="apartment" background blur={0.5}/>
+
       <Sky 
         distance={450000}
         sunPosition={[0, 1, 0]}
@@ -50,7 +53,6 @@ const Scene = () => {
         mieDirectionalG={0.8}
       />
       
-      {/* Iluminación optimizada para el corazón */}
       <ambientLight intensity={0.6} />
       <directionalLight 
         position={[5, 10, 5]} 
