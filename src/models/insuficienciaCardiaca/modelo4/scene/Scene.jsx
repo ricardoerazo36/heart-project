@@ -3,6 +3,7 @@ import { useState } from "react";
 import { Text, Html, Environment } from "@react-three/drei";
 import Runner from "../models-3d/runner";
 
+
 const Scene = () => {
   const [showInfo, setShowInfo] = useState(false);
   const [hoverText, setHoverText] = useState(false);
@@ -12,11 +13,12 @@ const Scene = () => {
       {/* Ambiente HDRI para mayor realismo */}
       <Environment preset="sunset" background />
       
-      
-      {/* Modelo del corredor - sin animación */}
+
+
+      {/* Modelo */}
       <Runner
         scale={3.5}
-        position={[0, -1.5, 0]}
+        position={[0, -2.05, 0]}
         rotation={[0, Math.PI / 4, 0]}
         onClick={() => setShowInfo(!showInfo)}
       />
@@ -40,7 +42,7 @@ const Scene = () => {
               color: '#2d3436',
               fontSize: '18px',
               fontWeight: 'bold'
-            }}>Prevención - Ejercicio Regular</h3>
+            }}>Ejercicio Regular</h3>
             <p style={{ 
               margin: '0 0 15px', 
               fontSize: '13px',

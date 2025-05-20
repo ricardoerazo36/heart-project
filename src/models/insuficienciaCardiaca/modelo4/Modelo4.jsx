@@ -7,16 +7,17 @@ import { Suspense } from "react";
 
 const Modelo4 = () => {
   return (
-    <Canvas shadows="soft" dpr={[1, 2]} camera={{ position: [0, 0, 6], fov: 50 }}>
+    <Canvas shadows="soft" dpr={[1, 2]} camera={{ position: [4, 0.5, 12], fov: 35 }}>
       {/* Controles de cámara */}
       <OrbitControls 
         enableZoom={true} 
         enablePan={false} 
         enableRotate={true}
-        minDistance={3}
-        maxDistance={12}
-        maxPolarAngle={Math.PI / 2}
-        target={[0, 0, 0]}
+        minDistance={10}
+        maxDistance={16}
+        maxPolarAngle={Math.PI / 2.2}
+        minPolarAngle={Math.PI / 6}
+        target={[0, -1.5, 0]}
       />
       
       {/* Sistema de iluminación */}
