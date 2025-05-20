@@ -1,7 +1,8 @@
 /* eslint-disable react/no-unknown-property */
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Text, Html, Environment, Stars, Sky } from "@react-three/drei";
 import { useThree, useFrame } from "@react-three/fiber";
+import * as THREE from "three";
 import Runner from "../models-3d/runner";
 
 
@@ -11,14 +12,29 @@ const Scene = () => {
   const [titlePosition, setTitlePosition] = useState([0, 2.2, 0]);
   const { scene } = useThree();
   
-  // Animación para el título
+  // Referencias para animaciones
+  const runnerRef = useRef();
+  const runnerGroupRef = useRef();
+  
+  
   useFrame(({ clock }) => {
     const time = clock.getElapsedTime();
-    setTitlePosition([
-      0,
-      2.2 + Math.sin(time * 0.8) * 0.1,
-      0
-    ]);
+  
+    
+    // Animación para el corredor
+    if (runnerRef.current) {
+      // Movimiento de rebote suave para simular carrera
+      runnerRef.current.position.y = -2.05 + Math.abs(Math.sin(time * 8)) * 0.08;
+      
+      // Ligera inclinación adelante y atrás para simular el movimiento de carrera
+      runnerRef.current.rotation.x = Math.sin(time * 8) * 0.04;
+    }
+    
+    // Animación para el grupo completo del corredor (rotación completa)
+    if (runnerGroupRef.current) {
+      // Movimiento de balanceo ligero
+      runnerGroupRef.current.rotation.y = Math.PI / 4 + Math.sin(time * 1.5) * 0.05;
+    }
   });
 
   return (
@@ -70,8 +86,8 @@ const Scene = () => {
       
       {/* Título centrado */}
       <Text
-        position={[0, 1.8, 0]}
-        rotation={[0, Math.PI / 4, 0]}
+        position={titlePosition}
+        rotation={[0, 0, 0]}
         fontSize={0.25}
         color="#000000"
         anchorX="center"
@@ -84,13 +100,22 @@ const Scene = () => {
         Descubre los Beneficios del Ejercicio
       </Text>
 
-      {/* Modelo 3D */}
-      <Runner
-        scale={3.5}
-        position={[0, -2.05, 0]}
-        rotation={[0, Math.PI / 4, 0]}
-        onClick={() => setShowInfo(!showInfo)}
-      />
+      {/* Grupo para animar el corredor completo */}
+      <group 
+        ref={runnerGroupRef}
+        position={[0, 0, 0]}
+        rotation={[0, 0, 0]}
+      >
+        {/* Modelo 3D */}
+        <Runner
+          ref={runnerRef}
+          scale={3.5}
+          position={[0, 0, 0]}
+          rotation={[0, -0.8, 0]}
+          onClick={() => setShowInfo(!showInfo)}
+        />
+                
+      </group>
 
       {/* HTML informativo*/}
       {showInfo && (
