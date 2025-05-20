@@ -25,7 +25,7 @@ const Home = () => {
 
       {/* Sección "¡Descubre tu corazón!" */}
       <div className="discover-section">
-        <h2 className="section-title">¡Descubre tu corazón!</h2>
+        <p className="section-title">¡Descubre tu corazón!</p>
         <p className="section-description">
           Explora nuestro contenido interactivo para aprender todo sobre el corazón, 
           sus características y cómo cuidarlo para mantenerlo saludable durante toda tu vida.
