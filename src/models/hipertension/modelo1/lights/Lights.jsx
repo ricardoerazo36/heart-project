@@ -1,27 +1,40 @@
 /* eslint-disable react/no-unknown-property */
 
+
 import { useRef } from "react";
-import { useHelper } from "@react-three/drei";
-import {  MathUtils } from "three";
-import { useFrame } from "@react-three/fiber";
+
 const Lights = () => {
   const directionalLightRef = useRef();
 
   //useHelper(mainLightRef, DirectionalLightHelper);
- 
+  
 
   return (
     <>
-      <directionalLight position={[10, 10, 5]} intensity={2} />
+      <ambientLight intensity={10} />
 
       <directionalLight
-        position={[-10, 10, 10]}
-        intensity={18}
+        position={[10, 10, 25]}
+        intensity={15}
         castShadow
         shadow-mapSize-width={1024}
         shadow-mapSize-height={1024}
-        shadow-radius = {2}
-        ref={directionalLightRef}
+        shadow-camera-left={-10}
+        shadow-camera-right={10}
+        shadow-camera-top={10}
+        shadow-camera-bottom={-10}
+        shadow-camera-near={1}
+        shadow-camera-far={50}
+        ref={mainLightRef}
+      />
+
+      <directionalLight
+        position = {[-10, -10, -25]}
+        intensity={15}
+        
+        shadow-mapSize-width={1024}
+        shadow-mapSize-height={1024}
+        ref={mainLightRef}
       />
     </>
   );

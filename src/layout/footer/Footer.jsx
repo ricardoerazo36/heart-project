@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="mt-0 container px-4">
         <hr className="mt-0" />
         <div className="row">
-          <div className=" col-6 col-lg-4">
+          <div className=" col">
             <h3 className=" fw-medium">HeartCare</h3>
           </div>
 
