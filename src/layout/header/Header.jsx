@@ -1,9 +1,12 @@
 import { NavLink } from "react-router";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import useAuthStore from "../../stores/use-auth-store";
 import "./Header.css";
 
 const Header = () => {
+  const { userLooged } = useAuthStore();
+
   return (
     <nav
       style={{ backgroundColor: "#225DCA", position: 'fixed', zIndex: 1000, width: '100%', top: 0, left: 0 }}
@@ -96,9 +99,27 @@ const Header = () => {
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/login" className="btn btn-custom">
-                Iniciar Sesión
-              </NavLink>
+              {userLooged ? (
+                <NavLink to="/profile" className="nav-link p-0">
+                  <div className="profile-avatar">
+                    {userLooged.photoURL ? (
+                      <img 
+                        src={userLooged.photoURL} 
+                        alt="Perfil" 
+                        className="profile-image"
+                      />
+                    ) : (
+                      <div className="profile-placeholder">
+                        <i className="bi bi-person-fill"></i>
+                      </div>
+                    )}
+                  </div>
+                </NavLink>
+              ) : (
+                <NavLink to="/login" className="btn btn-custom">
+                  Iniciar Sesión
+                </NavLink>
+              )}
             </li>
           </ul>
         </div>

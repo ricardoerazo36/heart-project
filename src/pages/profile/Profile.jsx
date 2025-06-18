@@ -1,6 +1,7 @@
 import { useCallback, useEffect } from "react";
 import useAuthStore from "../../stores/use-auth-store";
 import { useNavigate } from "react-router";
+import "./Profile.css";
 
 const Profile = () => {
   const { userLooged, logout } = useAuthStore();
@@ -11,7 +12,11 @@ const Profile = () => {
   }, [logout, navigate]);
 
   useEffect(() => {
-    if (!userLooged) return;
+    if (!userLooged) {
+      navigate("/login");
+      return;
+    }
+    
     const fetchData = async () => {
       const { displayName, email } = userLooged;
       const data = { displayName, email };
@@ -33,16 +38,57 @@ const Profile = () => {
       }
     };
     fetchData();
-  }, [userLooged]);
+  }, [userLooged, navigate]);
+
+  if (!userLooged) {
+    return null;
+  }
 
   return (
-    <>
-      <h2>Perfil de usuario</h2>
-      <p>¡Bienvenido! {userLooged?.displayName}</p>
-      <button onClick={handleLogout} title="Cerrar sesión">
-        Cerrar sesión
-      </button>
-    </>
+    <div className="profile-container">
+      <div className="profile-card">
+        <div className="profile-header">
+          <div className="profile-avatar-large">
+            {userLooged.photoURL ? (
+              <img 
+                src={userLooged.photoURL} 
+                alt="Foto de perfil" 
+                className="profile-image-large"
+              />
+            ) : (
+              <div className="profile-placeholder-large">
+                <i className="bi bi-person-fill"></i>
+              </div>
+            )}
+          </div>
+          <h2 className="profile-name">{userLooged.displayName || "Usuario"}</h2>
+          <p className="profile-email">{userLooged.email}</p>
+        </div>
+        
+        <div className="profile-info">
+          <h3>Información de la cuenta</h3>
+          <div className="info-item">
+            <span className="info-label">Nombre:</span>
+            <span className="info-value">{userLooged.displayName || "No disponible"}</span>
+          </div>
+          <div className="info-item">
+            <span className="info-label">Email:</span>
+            <span className="info-value">{userLooged.email}</span>
+          </div>
+        </div>
+        
+        <div className="profile-actions">
+          <button 
+            onClick={handleLogout} 
+            className="logout-button"
+            title="Cerrar sesión"
+          >
+            <i className="bi bi-box-arrow-right"></i>
+            Cerrar sesión
+          </button>
+        </div>
+      </div>
+    </div>
   );
 };
 
