@@ -62,8 +62,6 @@ const Scene = () => {
         setIsAudioPlaying(false);
       };
       
-      // No podemos agregar event listeners directamente al PositionalAudio de drei
-      // pero podemos controlar el estado desde nuestros controles
     }
   }, []);
 
