@@ -2,7 +2,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Text, Html, Environment, Stars, Sky, Text3D, Center } from "@react-three/drei";
 import { useThree, useFrame } from "@react-three/fiber";
-import * as THREE from "three";
 import Runner from "../models-3d/runner";
 
 
@@ -107,25 +106,26 @@ const Scene = () => {
 
       
       {/* Título centrado */}
+      <Center position={titlePosition}>
         <Text3D
-        font={"/fonts/raleway-bold.json"}
-        bevelEnabled
-        bevelSize={0.01}
-        bevelThickness={0.02}
-        height={0.01}
-        lineHeight={0.8}
-        letterSpacing={0.02}
-        size={0.3}
-        position={titlePosition}
-        rotation={[0, 0, 0]}
-        onPointerOver={() => setHoverText(true)}
-        onPointerOut={() => setHoverText(false)}
-        onClick={() => setShowInfo(!showInfo)}
-        scale={hoverText ? 1.2 : 1}
-       >
-        Descubre los Beneficios del Ejercicio
-        <meshNormalMaterial />
-       </Text3D>
+          font={"/fonts/raleway-bold.json"}
+          bevelEnabled
+          bevelSize={0.01}
+          bevelThickness={0.02}
+          height={0.01}
+          lineHeight={0.8}
+          letterSpacing={0.02}
+          size={0.3}
+          rotation={[0, 0, 0]}
+          onPointerOver={() => setHoverText(true)}
+          onPointerOut={() => setHoverText(false)}
+          onClick={() => setShowInfo(!showInfo)}
+          scale={hoverText ? 1.2 : 1}
+        >
+          Descubre los Beneficios del Ejercicio
+          <meshStandardMaterial color="#000000" />
+        </Text3D>
+      </Center>
       
 
       {/* Grupo para animar el corredor completo */}

@@ -1,13 +1,15 @@
 /* eslint-disable react/no-unknown-property */
 import { useState, useEffect } from "react";
-import { Sky, Environment, Text3D, Center} from "@react-three/drei";
+import { Sky, Environment, Text, Html, Text3D, Center} from "@react-three/drei";
 import RealisticHeart from "../models-3d/realisticHeart";
 import { useFrame } from "@react-three/fiber";
 
 
 const Scene = () => {
-  const [heartScale, setHeartScale] = useState(6);
+  const [heartScale, setHeartScale] = useState(10);
   const [isAnimationPaused, setIsAnimationPaused] = useState(false);
+  const [titlePosition, setTitlePosition] = useState([0, 2, 0]);
+
   
   // Manejo de teclado para pausar/reanudar la animación con la tecla E
   useEffect(() => {
@@ -30,7 +32,7 @@ const Scene = () => {
     const time = clock.getElapsedTime();
     
     // Simulación de latido cardíaco
-    const baseScale = 4;
+    const baseScale = 8;
     const beatIntensity = 0.4; // Intensidad del latido
     const beatSpeed = 1.2; // Velocidad del latido
     const heartBeat = Math.pow(Math.sin(time * beatSpeed) * 0.5 + 0.5, 2) * beatIntensity;
@@ -80,7 +82,24 @@ const Scene = () => {
         castShadow
         receiveShadow
       />
-
+      
+      {/* Título centrado */}
+      <Center position={titlePosition}>
+        <Text3D
+          font={"/fonts/raleway-bold.json"}
+          bevelEnabled
+          bevelSize={0.01}
+          bevelThickness={0.02}
+          height={0.01}
+          lineHeight={0.8}
+          letterSpacing={0.02}
+          size={0.3}
+          rotation={[0, 0, 0]}
+        >
+          Explora tu corazón!
+          <meshStandardMaterial color="#000000" />
+        </Text3D>
+      </Center>
       
     </>
   );
