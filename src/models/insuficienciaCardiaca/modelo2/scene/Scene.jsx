@@ -49,7 +49,7 @@ const Scene = () => {
         <shadowMaterial opacity={0.4} />
       </mesh>
       
-      {/* Texto 3D */}
+      {/* Texto 2D */}
       <Text
         position={[0, 1.2, 0]}
         rotation={[0, 0, 0]}

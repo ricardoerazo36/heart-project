@@ -1,8 +1,9 @@
 /* eslint-disable react/no-unknown-property */
 import { useState, useEffect } from "react";
-import { Sky, Environment } from "@react-three/drei";
+import { Sky, Environment, Text3D, Center} from "@react-three/drei";
 import RealisticHeart from "../models-3d/realisticHeart";
 import { useFrame } from "@react-three/fiber";
+
 
 const Scene = () => {
   const [heartScale, setHeartScale] = useState(6);
@@ -79,6 +80,8 @@ const Scene = () => {
         castShadow
         receiveShadow
       />
+
+      
     </>
   );
 };
