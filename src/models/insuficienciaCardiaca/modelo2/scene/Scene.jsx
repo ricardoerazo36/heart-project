@@ -49,7 +49,7 @@ const Scene = () => {
         <shadowMaterial opacity={0.4} />
       </mesh>
       
-      {/* Texto 3D */}
+      {/* Texto 2D */}
       <Text
         position={[0, 1.2, 0]}
         rotation={[0, 0, 0]}
@@ -64,6 +64,7 @@ const Scene = () => {
       >
         Corazón Dilatado
       </Text>
+      
       
       {/* Modelo del corazón */}
       <DilatedHeart
@@ -91,6 +92,14 @@ const Scene = () => {
               color: '#2b2d42',
               fontSize: '16px'
             }}>Corazón Dilatado</h3>
+            <p style={{ 
+              margin: '0 0 12px', 
+              fontSize: '13px',
+              lineHeight: '1.4'
+            }}>
+              La insuficiencia cardíaca provoca que el corazón se dilate para compensar 
+              su debilidad. Esto reduce su eficiencia y empeora el problema a largo plazo.
+            </p>
             <p style={{ 
               margin: '0 0 12px', 
               fontSize: '13px',
