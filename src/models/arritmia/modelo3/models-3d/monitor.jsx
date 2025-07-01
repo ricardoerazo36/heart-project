@@ -2,8 +2,8 @@
 import { useGLTF } from '@react-three/drei'
 import { useState } from 'react'
 
-export default function Pacemaker(props) {
-  const { nodes, materials } = useGLTF('/models-3d/pacemaker.glb')
+export default function Monitor(props) {
+  const { nodes, materials } = useGLTF('/models-3d/monitor.glb')
   const [hovered, setHovered] = useState(false)
   
   return (
@@ -11,8 +11,8 @@ export default function Pacemaker(props) {
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.PaceMaker.geometry}
-        material={materials.PacemakerMaterial}
+        geometry={nodes.Monitor.geometry}
+        material={materials.monitorMaterial}
         onPointerOver={() => {
           setHovered(true);
           document.body.style.cursor = "pointer";
@@ -26,4 +26,4 @@ export default function Pacemaker(props) {
   )
 }
 
-useGLTF.preload('/models-3d/pacemaker.glb')
+useGLTF.preload('/models-3d/monitor.glb')

@@ -1,11 +1,11 @@
 /* eslint-disable react/no-unknown-property */
 import { useState, useEffect, useRef } from "react";
 import { Text, Html, Sky } from "@react-three/drei";
-import Pacemaker from "../models-3d/pacemaker";
+import Monitor from "../models-3d/monitor"
 import { useFrame } from "@react-three/fiber";
 
 const Scene = () => {
-  const [pacemakerScale, setPacemakerScale] = useState(5);
+  const [monitorScale, setMonitorScale] = useState(5);
   const [showInfo, setShowInfo] = useState(false);
   const [hoverText, setHoverText] = useState(false);
   // Estado para controlar la pausa de la animación
@@ -27,21 +27,16 @@ const Scene = () => {
 
   // Animación que simula un pulso eléctrico pequeño y regular cada 1.2 segundos
   useFrame(({ clock }) => {
-    if (isAnimationPaused) {
-      return;
-    }
-        const time = clock.getElapsedTime();
-    const pulseCycle = time % 1.2; // Ciclo de 1.2 segundos (50 pulsos por minuto)
-    
-    let pulseScale = 1;
-    
-    if (pulseCycle < 0.15) {
-      // Simulando el impulso eléctrico
-      pulseScale = 1 + 0.03 * Math.sin(pulseCycle * Math.PI / 0.15);
-    }
-    
-    setPacemakerScale(5 * pulseScale);
-  });
+  if (isAnimationPaused) {
+    return;
+  }
+  
+  const time = clock.getElapsedTime();
+  // Usamos una función senoidal para una expansión/contracción suave y continua
+  const breathScale = 1 + 0.05 * Math.sin(time * 1.5); // 1.5 controla la velocidad
+  
+  setMonitorScale(5 * breathScale);
+});
 
   return (
     <>
@@ -78,8 +73,8 @@ const Scene = () => {
       
       {/* Título centrado */}
       <Text
-        position={[0, 1.5, 0]}
-        fontSize={0.15}
+        position={[0, 3, 0]}
+        fontSize={0.50}
         color="#000000"
         anchorX="center"
         anchorY="middle"
@@ -88,13 +83,13 @@ const Scene = () => {
         onClick={() => setShowInfo(!showInfo)}
         scale={hoverText ? 1.2 : 1}
       >
-        Marcapasos
+        Monitor de presion arterial
       </Text>
       
-      {/* Modelo del marcapasos */}
-      <Pacemaker
-        scale={pacemakerScale}
-        position={[0, 0.0, 0]}
+      {/* Modelo del monitor */}
+      <Monitor
+        scale={monitorScale}
+        position={[0, 1, 0]}
         rotation={[0, 1.2, 0]}
         onClick={() => setShowInfo(!showInfo)}
         castShadow
@@ -125,13 +120,13 @@ const Scene = () => {
               margin: '0 0 10px', 
               color: '#2b2d42',
               fontSize: '16px'
-            }}>Marcapasos Cardíaco</h3>
+            }}>Monitor Cardíaco</h3>
             <p style={{ 
               margin: '0 0 12px', 
               fontSize: '13px',
               lineHeight: '1.4'
             }}>
-              Este dispositivo médico envía impulsos eléctricos para regular el ritmo cardíaco.
+              Este monitor de presion arterial mide la fuerza o presion de la sangre sobre las arterias cuando el corazón bombea. 
             </p>
             <div style={{ marginBottom: '12px' }}>
               <p style={{ fontSize: '12px', margin: '0 0 8px' }}>Controles:</p>

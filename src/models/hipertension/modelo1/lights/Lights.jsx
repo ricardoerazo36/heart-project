@@ -4,7 +4,7 @@
 import { useRef } from "react";
 
 const Lights = () => {
-  const directionalLightRef = useRef();
+  const mainLightRef = useRef();
 
   //useHelper(mainLightRef, DirectionalLightHelper);
   
