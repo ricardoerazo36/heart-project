@@ -42,9 +42,9 @@ const Disease = () => {
         </div>
       </div>
 
-      {/* Sección "¿Cómo afecta?" */}
+      {/* Sección "Síntomas" */}
       <div className="seccion-sintomas">
-        <h2 className="seccion-titulo">¿Cómo afecta?</h2>
+        <h2 className="seccion-titulo">Síntomas</h2>
         <div className="sintomas-grid">
           <div className="sintomas-izquierda">
             <div className="sintomas-container">
