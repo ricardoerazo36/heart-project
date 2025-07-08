@@ -96,7 +96,7 @@ const Scene = () => {
           size={0.3}
           rotation={[0, 0, 0]}
         >
-          Explora tu corazón!
+          ¡Explora tu corazón!
           <meshStandardMaterial color="#000000" />
         </Text3D>
       </Center>
