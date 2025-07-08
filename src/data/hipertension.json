@@ -1,7 +1,7 @@
 {
 	"nombre": "Hipertensión",
 	"descripcion": "Hipertensión en el corazón (hipertensión arterial) es una condición en la que la presión de la sangre contra las paredes de las arterias es constantemente alta. Con el tiempo, esta presión excesiva obliga al corazón a trabajar más para bombear la sangre, lo que puede causar varios problemas cardíacos.",
-	"sintomas": "hipertrofia ventricular izquierda, insuficiencia cardiaca, arritmias",
-	"tratamiento": "tener una dieta saludable, ejercitarse, dejar de fumar, medicamentos antihipertensivos",
+	"sintomas": "La hipertensión a menudo no presenta síntomas, especialmente en sus primeras etapas, lo que hace que sea importante controlar regularmente la presión arterial. Algunas personas pueden experimentar dolor de cabeza, visión borrosa o dificultad para respirar, pero estos síntomas no son específicos de la hipertensión. \n Si se experimentan estos Sinomas, se debe ir a un centro de salud donde se realizaràn mediciones con un tensiometro durante 24H para determinar si efectivamente es la aflicciòn.",
+	"tratamiento": "Se recomienda primero un cambio de estilo de vida. Se recomienda una dieta baja en sodio, aumentar la actividad física y manejar el estrés. Si despues de esto los sintomas persisten se recetan medicamentos para poder controlar los sintomas de la enfermedad",
 	"prevencionYcuidado": "evitar el estres, tener una alimentacion balanceada evirar excesos de sal, grasas y alcohol, ejercitarse constantemente y mirar si hay predisposicion genetica."
 }
