@@ -6,7 +6,7 @@ import Lights from "./lights/Lights";
 
 const Modelo1 = () => {
   return (
-    <Canvas camera={{ position: [0, 1, 2] }} shadows={true}>
+    <Canvas camera={{ position: [1, 0, 0] }} shadows={true}>
       <Lights />
       <OrbitControls enableZoom={true} enablePan={true} enableRotate={true} />
       <Arritmia />

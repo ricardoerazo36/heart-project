@@ -126,7 +126,7 @@ const Scene = () => {
               fontSize: '13px',
               lineHeight: '1.4'
             }}>
-              Este monitor de presion arterial mide la fuerza o presion de la sangre sobre las arterias cuando el corazón bombea. 
+              Este monitor de presion arterial mide la fuerza o presion de la sangre sobre las arterias con cada bombeo.
             </p>
             <div style={{ marginBottom: '12px' }}>
               <p style={{ fontSize: '12px', margin: '0 0 8px' }}>Controles:</p>
