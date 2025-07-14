@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 import { useState, useEffect, useRef } from "react";
-import { Text, Html, Sky } from "@react-three/drei";
+import { Text, Html, Sky, PositionalAudio } from "@react-three/drei";
 import Pacemaker from "../models-3d/pacemaker";
 import { useFrame } from "@react-three/fiber";
 
@@ -10,12 +10,29 @@ const Scene = () => {
   const [hoverText, setHoverText] = useState(false);
   // Estado para controlar la pausa de la animación
   const [isAnimationPaused, setIsAnimationPaused] = useState(false);
+  // Estado para controlar el audio
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   
-  // Manejo de teclado solo para pausar/reanudar la animación
+  // Referencias para el audio y el marcapasos
+  const audioRef = useRef();
+  const pacemakerRef = useRef();
+  
+  // Manejo de teclado para pausar/reanudar animación y controlar audio
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'm' || e.key === 'M') {
         setIsAnimationPaused(prev => !prev);
+      } else if (e.key === 's' || e.key === 'S') {
+        // Toggle del audio
+        if (audioRef.current) {
+          if (isAudioPlaying) {
+            audioRef.current.pause();
+            setIsAudioPlaying(false);
+          } else {
+            audioRef.current.play();
+            setIsAudioPlaying(true);
+          }
+        }
       }
     };
     
@@ -23,6 +40,29 @@ const Scene = () => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
+  }, [isAudioPlaying]);
+
+  // Configurar el audio cuando esté listo
+  useEffect(() => {
+    if (audioRef.current) {
+      // Configurar el audio como loop para que se repita
+      audioRef.current.setLoop(true);
+      audioRef.current.setVolume(0.5);
+      
+      // Eventos del audio
+      const handleAudioEnd = () => {
+        setIsAudioPlaying(false);
+      };
+      
+      const handleAudioPlay = () => {
+        setIsAudioPlaying(true);
+      };
+      
+      const handleAudioPause = () => {
+        setIsAudioPlaying(false);
+      };
+      
+    }
   }, []);
 
   // Animación que simula un pulso eléctrico pequeño y regular cada 1.2 segundos
@@ -30,7 +70,7 @@ const Scene = () => {
     if (isAnimationPaused) {
       return;
     }
-        const time = clock.getElapsedTime();
+    const time = clock.getElapsedTime();
     const pulseCycle = time % 1.2; // Ciclo de 1.2 segundos (50 pulsos por minuto)
     
     let pulseScale = 1;
@@ -91,22 +131,32 @@ const Scene = () => {
         Marcapasos
       </Text>
       
-      {/* Modelo del marcapasos */}
-      <Pacemaker
-        scale={pacemakerScale}
-        position={[0, 0.0, 0]}
-        rotation={[0, 1.2, 0]}
-        onClick={() => setShowInfo(!showInfo)}
-        castShadow
-        receiveShadow
-      />
+      {/* Grupo que contiene el marcapasos y el audio posicional */}
+      <group ref={pacemakerRef} position={[0, 0.0, 0]}>
+        {/* Audio 3D posicionado en el marcapasos */}
+        <PositionalAudio
+          ref={audioRef}
+          url="/sounds/heart.mp3"
+          distance={5}
+          loop={true}
+          autoplay={false}
+        />
+        
+        {/* Modelo del marcapasos */}
+        <Pacemaker
+          scale={pacemakerScale}
+          rotation={[0, 1.2, 0]}
+          onClick={() => setShowInfo(!showInfo)}
+          castShadow
+          receiveShadow
+        />
+      </group>
       
       {/* Plataforma mejorada para mostrar sombras */}
       <mesh position={[0, -1, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
         <planeGeometry args={[20, 20]} />
         <meshStandardMaterial color="#ffffff" />
       </mesh>
-      
       
       {/* Elemento HTML interactivo */}
       {showInfo && (
@@ -137,7 +187,17 @@ const Scene = () => {
               <p style={{ fontSize: '12px', margin: '0 0 8px' }}>Controles:</p>
               <ul style={{ fontSize: '11px', textAlign: 'left', paddingLeft: '20px', margin: '0' }}>
                 <li>M: Pausar/reanudar animación</li>
+                <li>S: {isAudioPlaying ? 'Pausar' : 'Reproducir'} sonido cardíaco</li>
               </ul>
+            </div>
+            <div style={{ marginBottom: '12px' }}>
+              <p style={{ 
+                fontSize: '11px', 
+                color: isAudioPlaying ? '#28a745' : '#6c757d',
+                fontWeight: 'bold'
+              }}>
+                Audio: {isAudioPlaying ? 'Reproduciendo' : 'Pausado'}
+              </p>
             </div>
             <div style={{ display: 'flex', justifyContent: 'center' }}>
               <button 

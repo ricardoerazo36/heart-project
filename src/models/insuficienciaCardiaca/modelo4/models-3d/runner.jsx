@@ -1,24 +1,23 @@
 /* eslint-disable react/no-unknown-property */
 import { useGLTF } from '@react-three/drei'
 import { useState } from 'react'
-import { useFrame } from '@react-three/fiber';
 
-export default function DilatedHeart(props) {
-  const { nodes, materials } = useGLTF('/models-3d/dilated-heart.glb')
+export default function Runner(props) {
+  const { nodes, materials } = useGLTF('/models-3d/runner.glb')
   const [hovered, setHovered] = useState(false)
   
   // Clona el material para no afectar otras instancias
-  const heartMaterial = materials.HeartMaterial.clone();
+  const runnerMaterial = materials.RunnerMaterial.clone();
   
   // Cambia el color cuando está hovereado
   if (hovered) {
-    heartMaterial.color.set('#2392FA');
-    heartMaterial.emissive.set('#2392FA');
-    heartMaterial.emissiveIntensity = 0.3;
+    runnerMaterial.color.set('#2392FA');
+    runnerMaterial.emissive.set('#2392FA');
+    runnerMaterial.emissiveIntensity = 0.3;
   } else {
-    heartMaterial.color.set(materials.HeartMaterial.color);
-    heartMaterial.emissive.set('#000000');
-    heartMaterial.emissiveIntensity = 0;
+    runnerMaterial.color.set(materials.RunnerMaterial.color);
+    runnerMaterial.emissive.set('#000000');
+    runnerMaterial.emissiveIntensity = 0;
   }
   
   return (
@@ -26,8 +25,8 @@ export default function DilatedHeart(props) {
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Heart.geometry}
-        material={heartMaterial}
+        geometry={nodes.Runner.geometry}
+        material={runnerMaterial}
         onPointerOver={() => {
           setHovered(true);
           document.body.style.cursor = "pointer";
@@ -41,4 +40,4 @@ export default function DilatedHeart(props) {
   )
 }
 
-useGLTF.preload('/models-3d/dilated-heart.glb')
+useGLTF.preload('/models-3d/runner.glb')
