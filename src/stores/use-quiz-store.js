@@ -21,15 +21,15 @@ const useQuizStore = create((set) => ({
       };
     }),
 
-    clearQuiz: () => {
-        set({
-          quiz: {
-            correctAnswers: 0,
-            incorrectAnswers: 0,
-            percentageQuizCompleted: 0,
-          },
-        });
+  resetQuizProgress: () => {
+    set({
+      quiz: {
+        correctAnswers: 0,
+        incorrectAnswers: 0,
+        percentageQuizCompleted: 0,
       },
+    });
+  },
 }));
 
 export default useQuizStore;

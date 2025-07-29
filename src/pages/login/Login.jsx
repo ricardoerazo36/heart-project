@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import useAuthStore from "../../stores/use-auth-store";
 import "./Login.css";
 
@@ -9,13 +9,14 @@ const Login = () => {
   
   const { loginGoogleWithPopUp, userLooged } = useAuthStore();
   const navigate = useNavigate();
-
+  const location = useLocation();
+  const from = location.state?.from || "/"
   // Redirect if user is already logged in
   useEffect(() => {
     if (userLooged) {
-      navigate("/");
+      navigate(from, { replace: true });
     }
-  }, [userLooged, navigate]);
+  }, [userLooged, from, navigate]);
 
   const handleGoogleLogin = async () => {
     setError("");
