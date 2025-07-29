@@ -106,8 +106,10 @@ const Quiz = () => {
           Preguntas correctas: {score} / {quizQuestions.length}
         </p>
         <p>Calificación final: {percentage}%</p>
-        <button onClick={handleRestart}>Reintentar</button>
-        {/* Aquí más adelante puedes mostrar el medallero */}
+        <div style={{ display: "flex", gap: "1rem", justifyContent: "center" }}>
+          <button onClick={handleRestart}>Reintentar</button>
+          <button onClick={() => navigate("/medallero")}>Ver medallero</button>
+        </div>
       </div>
     );
   }

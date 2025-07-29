@@ -7,9 +7,8 @@ import Layout from "./layout/Layout";
 import Disease from "./pages/disease/Disease.jsx";
 import Us from "./pages/sobreNosotros/Us.jsx"
 import Login from "./pages/login/Login.jsx";
-import Profile from "./pages/profile/Profile.jsx";
-
-// import App from "./App";
+import Profile from "./pages/profile/Profile.jsx"
+import Medallero from "./pages/medallero/Medallero";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -21,6 +20,8 @@ createRoot(document.getElementById("root")).render(
         <Route path="/nosotros" element={<Us />} />
         <Route path="/login" element={<Login />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/medallero" element={<Medallero />} />
+
       </Routes>
     </Layout>
   </BrowserRouter>

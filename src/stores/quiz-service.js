@@ -8,6 +8,7 @@ export const saveQuizProgress = async ({ percentage, correctAnswers, totalQuesti
 
   try {
     await setDoc(doc(db, "quizProgress", user.uid), {
+      name: user.displayName || "Usuario",
       percentageCompleted: percentage,
       correctAnswers,
       totalQuestions,
