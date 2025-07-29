@@ -8,7 +8,7 @@ import Scene from "./scene/Scene";
 
 const Modelo4 = () => {
   return (
-    <Canvas camera={{ position: [0, 1, 3] }} shadows>
+    <Canvas camera={{ position: [-2.8, 1, 2] }} shadows>
       <Scene />
       <Lights />
       <OrbitControls enableZoom enablePan enableRotate />

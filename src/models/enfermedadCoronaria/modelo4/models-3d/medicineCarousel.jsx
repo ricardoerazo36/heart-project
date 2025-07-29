@@ -1,8 +1,6 @@
 /* eslint-disable react/no-unknown-property */
 import { Html, Text } from "@react-three/drei";
 import { useEffect, useState } from "react";
-
-// Importa cada modelo con su nombre explícito
 import { Model as Pill1 } from "./pill-1";
 import { Model as Pill2 } from "./pill-2";
 import { Model as Pill3 } from "./pill-3";
@@ -19,14 +17,17 @@ const medicine = [
 
 export default function MedicineCarousel(props) {
   const [index, setIndex] = useState(0);
-  const [showInfo, setShowInfo] = useState(true); // ✅ Declarado
+  const [showInfo, setShowInfo] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
   const handleKeyDown = (e) => {
     if (e.key.toLowerCase() === "q") {
       setIndex((prev) => (prev - 1 + medicine.length) % medicine.length);
+      setShowInfo(false);
     }
     if (e.key.toLowerCase() === "e") {
       setIndex((prev) => (prev + 1) % medicine.length);
+      setShowInfo(false);
     }
   };
 
@@ -35,18 +36,31 @@ export default function MedicineCarousel(props) {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
+  useEffect(() => {
+    document.body.style.cursor = hovered ? "pointer" : "default";
+  }, [hovered]);
+
   const SelectedModel = medicine[index].Modelo;
 
   return (
     <group {...props} position={[0, -1, 0]}>
-      {/* Modelo 3D */}
-<SelectedModel key={medicine[index].nombre} scale={2.5} position={[0, 0.5, 0]} />
+      {/* Modelo 3D clickeable */}
+      <group
+        onClick={(e) => {
+          e.stopPropagation();
+          setShowInfo(true);
+        }}
+        onPointerOver={() => setHovered(true)}
+        onPointerOut={() => setHovered(false)}
+      >
+        <SelectedModel key={medicine[index].nombre} scale={2.5} position={[0, 0.5, 0]} />
+      </group>
 
       {/* Texto flotante con nombre del medicamento */}
       <Text
         fontSize={0.3}
-        position={[0, 1, 0]}
-        rotation={[0, 4.8, 0]}
+        position={[0, 1.2, 0]}
+        rotation={[0, Math.PI, 0]} // para que siempre mire a la cámara
         color="#000000"
         anchorX="center"
         anchorY="middle"
@@ -56,9 +70,9 @@ export default function MedicineCarousel(props) {
         {medicine[index].nombre}
       </Text>
 
-      {/* Información flotante */}
+      {/* Información flotante al hacer clic */}
       {showInfo && (
-        <Html center position={[0, 0, 0]}>
+        <Html center position={[0, 0.5, 0]}>
           <div
             style={{
               backgroundColor: "white",
@@ -70,8 +84,10 @@ export default function MedicineCarousel(props) {
               fontFamily: "Arial, sans-serif",
             }}
           >
-            <h3>Medicinas</h3>
-            <p>Presiona Q / E para cambiar de medicamento</p>
+            <h3>{medicine[index].nombre}</h3>
+            <p>
+              Presiona <strong>Q</strong> o <strong>E</strong> para cambiar de medicamento.
+            </p>
             <button
               onClick={(e) => {
                 e.stopPropagation();
