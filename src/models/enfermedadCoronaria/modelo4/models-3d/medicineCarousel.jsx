@@ -8,11 +8,11 @@ import { Model as Pill4 } from "./pill-4";
 import { Model as Pill5 } from "./pill-5";
 
 const medicine = [
-  { nombre: "Aspirina", Modelo: Pill1 },
-  { nombre: "Atorvastatina", Modelo: Pill2 },
+  { nombre: "Metoprolol", Modelo: Pill1 },
+  { nombre: "Aspirina", Modelo: Pill2 },
   { nombre: "Clopidogrel", Modelo: Pill3 },
-  { nombre: "Enalapril", Modelo: Pill4 },
-  { nombre: "Metoprolol", Modelo: Pill5 },
+  { nombre: "Atorvastatina", Modelo: Pill4 },
+  { nombre: "Enalapril", Modelo: Pill5 },
 ];
 
 export default function MedicineCarousel(props) {
@@ -44,7 +44,6 @@ export default function MedicineCarousel(props) {
 
   return (
     <group {...props} position={[0, -1, 0]}>
-      {/* Modelo 3D clickeable */}
       <group
         onClick={(e) => {
           e.stopPropagation();
@@ -53,14 +52,18 @@ export default function MedicineCarousel(props) {
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
       >
-        <SelectedModel key={medicine[index].nombre} scale={2.5} position={[0, 0.5, 0]} />
+        <SelectedModel
+          key={medicine[index].nombre}
+          scale={2.5}
+          position={[0, 0.4, 0]}
+          rotation={[0, Math.PI, 0]}
+        />
       </group>
 
-      {/* Texto flotante con nombre del medicamento */}
       <Text
         fontSize={0.3}
-        position={[0, 1.2, 0]}
-        rotation={[0, Math.PI, 0]} // para que siempre mire a la cámara
+        position={[0, 1, 0]}
+        rotation={[0, Math.PI, 0]}
         color="#000000"
         anchorX="center"
         anchorY="middle"
@@ -69,8 +72,7 @@ export default function MedicineCarousel(props) {
       >
         {medicine[index].nombre}
       </Text>
-
-      {/* Información flotante al hacer clic */}
+     
       {showInfo && (
         <Html center position={[0, 0.5, 0]}>
           <div
@@ -86,7 +88,8 @@ export default function MedicineCarousel(props) {
           >
             <h3>{medicine[index].nombre}</h3>
             <p>
-              Presiona <strong>Q</strong> o <strong>E</strong> para cambiar de medicamento.
+              Presiona <strong>Q</strong> o <strong>E</strong> para cambiar de
+              medicamento.
             </p>
             <button
               onClick={(e) => {
