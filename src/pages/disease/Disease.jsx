@@ -53,7 +53,7 @@ const Disease = () => {
           </div>
           <div className="sintomas-derecha">
             <div className="sintomas-imagen">
-              <Suspense fallback={<div>Cargando imagen...</div>}>
+              <Suspense fallback={<div>Cargando modelo 2...</div>}>
                 {Modelos.Modelo2 ? <Modelos.Modelo2 /> : <div className="imagen-placeholder">Imagen no disponible</div>}
               </Suspense>
             </div>

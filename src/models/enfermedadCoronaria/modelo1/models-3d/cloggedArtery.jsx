@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unknown-property */
-import { useGLTF } from '@react-three/drei'
+import { Html, useGLTF } from '@react-three/drei'
 import { useRef, useEffect } from 'react'
 import { useFrame } from '@react-three/fiber'
 
@@ -25,6 +25,24 @@ export default function CloggedArtery(props) {
     })
   }, [scene])
 
+    const Label3D = () => (
+      <Html
+        position={[0, 0.005, 0]}
+        center
+        style={{
+          background: "rgba(0, 0, 0, 0.7)",
+          color: "white",
+          padding: "6px 12px",
+          borderRadius: "8px",
+          fontSize: "14px",
+          fontFamily: "Arial, sans-serif",
+          whiteSpace: "nowrap",
+        }}
+      >
+        Arteria Coronaria Obstruida (Simulación)
+      </Html>
+    );
+
   console.log("llego modelo 1")
   return (
     <group ref={cloggedArteryRef} {...props} dispose={null} scale={[200,200,200]}>
@@ -34,6 +52,8 @@ export default function CloggedArtery(props) {
         geometry={nodes.CloggedArtery.geometry}
         material={materials.CloggedArteryMaterial}
       />
+      <Html/>
+      <Label3D/>
     </group>
   )
 }

@@ -1,11 +1,12 @@
 /* eslint-disable react/no-unknown-property */
-import { useGLTF, Html, Text } from "@react-three/drei";
+import { useGLTF, Html, Text, PositionalAudio } from "@react-three/drei";
 import { useRef, useEffect, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 
 export default function HeartCoronary(props) {
   const { nodes, materials, scene } = useGLTF("/models-3d/heart-coronary.glb");
   const arteryRef = useRef();
+  const audioRef = useRef();
   const [showInfo, setShowInfo] = useState(false);
   const [isBeating, setIsBeating] = useState(true);
   const [hovered, setHovered] = useState(false);
@@ -28,6 +29,16 @@ export default function HeartCoronary(props) {
       arteryRef.current.scale.set(scale, scale, scale);
     }
   });
+
+  useEffect(() => {
+    if (audioRef.current) {
+      if (isBeating) {
+        audioRef.current.play();
+      } else {
+        audioRef.current.pause();
+      }
+    }
+  }, [isBeating]);
 
   // Activar sombras
   useEffect(() => {
@@ -58,7 +69,7 @@ export default function HeartCoronary(props) {
           setShowInfo(true);
         }}
       />
-
+      <PositionalAudio ref={audioRef} url="/sounds/heart.mp3" distance={2} loop />
       <Text
         position={[0, 0.006, 0]}
         fontSize={0.0009}
