@@ -89,20 +89,13 @@ export default function Artery(props) {
               fontFamily: "Arial, sans-serif",
             }}
           >
-            <h3
-              
-            >
-              Arteria Coronaria
-            </h3>
-            <p>
-              Usa las teclas ← y → para rotar el modelo.
-            </p>
+            <h3>Arteria Coronaria</h3>
+            <p>Usa las teclas ← y → para rotar el modelo.</p>
             <button
               onClick={(e) => {
                 e.stopPropagation();
                 setShowInfo(false);
               }}
-             
             >
               Cerrar
             </button>

@@ -1,31 +1,34 @@
 /* eslint-disable react/no-unknown-property */
-import { useRef } from "react";
+import { Environment } from "@react-three/drei";
 
 const Lights = () => {
-  const directionalLightRef = useRef();
-
   return (
     <>
-      {/* Luz ambiental suave para iluminación general */}
-      <ambientLight intensity={1.5} />
-      
-      {/* Única luz direccional con sombra nítida */}
+      {/* Luz ambiental suave */}
+      <ambientLight intensity={0.4} />
+
+      {/* Luz direccional principal */}
       <directionalLight
-        ref={directionalLightRef}
+        position={[3, 5, 2]}
+        intensity={1.2}
         castShadow
-        position={[5, 10, 8]}
-        intensity={12}
-        shadow-mapSize={[2048, 2048]}
+        shadow-mapSize-width={2048}
+        shadow-mapSize-height={2048}
         shadow-bias={-0.0001}
-      >
-        <orthographicCamera 
-          attach="shadow-camera" 
-          args={[-10, 10, 10, -10, 0.1, 50]} 
-        />
-      </directionalLight>
-      
-      {/* Luz de relleno frontal (sin sombras) */}
-      <pointLight position={[0, 2, 8]} intensity={5} color="#ffffff" />
+      />
+
+      {/* Luz focal suave (simula lámpara médica) */}
+      <spotLight
+        position={[2, 5, 0]}
+        angle={0.3}
+        penumbra={0.5}
+        intensity={1}
+        castShadow
+        color="#ffcccc"
+      />
+
+      {/* Entorno realista */}
+      <Environment preset="city" background={false} />
     </>
   );
 };
