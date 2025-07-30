@@ -1,42 +1,14 @@
 /* eslint-disable react/no-unknown-property */
 import { useState, useEffect, useRef } from "react";
 import { Text, Html, Sky } from "@react-three/drei";
-import Monitor from "../models-3d/monitor"
+import Arritmia from "../models-3d/Arritmia"
 import { useFrame } from "@react-three/fiber";
 
 const Scene = () => {
   const [monitorScale, setMonitorScale] = useState(5);
   const [showInfo, setShowInfo] = useState(false);
   const [hoverText, setHoverText] = useState(false);
-  // Estado para controlar la pausa de la animación
-  const [isAnimationPaused, setIsAnimationPaused] = useState(false);
   
-  // Manejo de teclado solo para pausar/reanudar la animación
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'm' || e.key === 'M') {
-        setIsAnimationPaused(prev => !prev);
-      }
-    };
-    
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
-
-  // Animación que simula un pulso eléctrico pequeño y regular cada 1.2 segundos
-  useFrame(({ clock }) => {
-  if (isAnimationPaused) {
-    return;
-  }
-  
-  const time = clock.getElapsedTime();
-  // Usamos una función senoidal para una expansión/contracción suave y continua
-  const breathScale = 1 + 0.05 * Math.sin(time * 1.5); // 1.5 controla la velocidad
-  
-  setMonitorScale(5 * breathScale);
-});
 
   return (
     <>
@@ -71,23 +43,10 @@ const Scene = () => {
         shadow-bias={-0.0001}
       />
       
-      {/* Título centrado */}
-      <Text
-        position={[0, 3, 0]}
-        fontSize={0.50}
-        color="#000000"
-        anchorX="center"
-        anchorY="middle"
-        onPointerOver={() => setHoverText(true)}
-        onPointerOut={() => setHoverText(false)}
-        onClick={() => setShowInfo(!showInfo)}
-        scale={hoverText ? 1.2 : 1}
-      >
-        Monitor de presion arterial
-      </Text>
       
-      {/* Modelo del monitor */}
-      <Monitor
+      
+      {/* Modelo del corazón */}
+      <Arritmia
         scale={monitorScale}
         position={[0, 1, 0]}
         rotation={[0, 1.2, 0]}
@@ -101,6 +60,28 @@ const Scene = () => {
         <planeGeometry args={[20, 20]} />
         <meshStandardMaterial color="#ffffff" />
       </mesh>
+      {/* etiqueta */}
+      <Html
+        position={[0, 1, 0]}
+        center
+        style={{
+          pointerEvents: 'none',
+          transform: 'translateX(-50%)'
+        }}
+      >
+        <div style={{
+          background: 'rgba(255, 255, 255, 0.9)',
+          padding: '8px 16px',
+          borderRadius: '20px',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.1)',
+          fontSize: '18px',
+          fontWeight: 'bold',
+          color: '#ff4757',
+          whiteSpace: 'nowrap'
+        }}>
+          El corazón
+        </div>
+      </Html>
       
       
       {/* Elemento HTML interactivo */}
@@ -120,18 +101,18 @@ const Scene = () => {
               margin: '0 0 10px', 
               color: '#2b2d42',
               fontSize: '16px'
-            }}>Monitor Cardíaco</h3>
+            }}>Corazón humano</h3>
             <p style={{ 
               margin: '0 0 12px', 
               fontSize: '13px',
               lineHeight: '1.4'
             }}>
-              Este monitor de presion arterial mide la fuerza o presion de la sangre sobre las arterias con cada bombeo.
+              El corazón es uno de los organos más importantes que tenemos, sin él no podemos vivir.
             </p>
             <div style={{ marginBottom: '12px' }}>
               <p style={{ fontSize: '12px', margin: '0 0 8px' }}>Controles:</p>
               <ul style={{ fontSize: '11px', textAlign: 'left', paddingLeft: '20px', margin: '0' }}>
-                <li>M: Pausar/reanudar animación</li>
+                <li>e: Pausar/reanudar animación</li>
               </ul>
             </div>
             <div style={{ display: 'flex', justifyContent: 'center' }}>

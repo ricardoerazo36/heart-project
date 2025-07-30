@@ -6,6 +6,7 @@ import Lights from "../modelo1/lights/Lights";
 import HeartRateMonitor from "../modelo1/models-3d/HeartRateMonitor";
 
 
+
 // Habilitamos usar <shadowMaterial /> en JSX
 
 const Modelo4 = () => {
@@ -19,7 +20,7 @@ const Modelo4 = () => {
         scale={5.2}
       />
       <HeartRateMonitor
-        scale={0.1} // Reduje la escala porque 2 podría ser demasiado grande
+        scale={0.1} 
         position={[0, 0, 0]}
       />
       <mesh receiveShadow rotation={[-Math.PI / 2, 0, 0]} position={[0, -1, 0]}>
