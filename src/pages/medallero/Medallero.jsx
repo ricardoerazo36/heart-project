@@ -81,9 +81,9 @@ const Medallero = () => {
           <ambientLight intensity={1.5} />
           <directionalLight position={[5, 10, 5]} />
           <OrbitControls enablePan={false} />
-          <PodiumBox position={[-1.5, 0, 0]} color="silver" user={topUsers[1]} />
+          <PodiumBox position={[-3, 0, 0]} color="silver" user={topUsers[1]} />
           <PodiumBox position={[0, 0, 0]} color="gold" user={topUsers[0]} />
-          <PodiumBox position={[1.5, 0, 0]} color="#cd7f32" user={topUsers[2]} />
+          <PodiumBox position={[3, 0, 0]} color="#cd7f32" user={topUsers[2]} />
         </Canvas>
       </div>
 
