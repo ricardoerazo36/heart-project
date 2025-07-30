@@ -3,6 +3,9 @@ import { Canvas } from "@react-three/fiber";
 import Arritmia from "./models-3d/Arritmia";
 import { OrbitControls } from "@react-three/drei";
 import Lights from "./lights/Lights";
+import Scene from "./scene/Scene";
+import { Suspense } from "react";
+
 
 const Modelo1 = () => {
   return (
@@ -14,6 +17,11 @@ const Modelo1 = () => {
         <planeGeometry args={[5, 5]} />
         <shadowMaterial opacity={0.3} />
       </mesh>
+      <Suspense fallback={null}>
+                <Scene />
+            </Suspense>
+
+
     </Canvas>
   );
 };
