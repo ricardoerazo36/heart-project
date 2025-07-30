@@ -77,7 +77,7 @@ const Medallero = () => {
   return (
     <div className="medallero-page">
       <div className="medallero-canvas">
-        <Canvas camera={{ position: [0, 2, 6], fov: 50 }}>
+        <Canvas camera={{ position: [0, 2, 6], fov: 70 }}>
           <ambientLight intensity={1.5} />
           <directionalLight position={[5, 10, 5]} />
           <OrbitControls enablePan={false} />
